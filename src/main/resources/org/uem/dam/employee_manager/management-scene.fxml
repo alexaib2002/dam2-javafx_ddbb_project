@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="666.0" prefWidth="548.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.uem.dam.employee_manager.controllers.ManagementScene">
+   <children>
+      <SplitPane VBox.vgrow="ALWAYS">
+         <items>
+            <ScrollPane fx:id="contentTableScrollPane" fitToHeight="true" fitToWidth="true" maxHeight="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+              <content>
+                <AnchorPane maxHeight="Infinity" maxWidth="Infinity">
+                     <children>
+                        <TableView fx:id="dataTableView" layoutY="76.0" maxHeight="Infinity" maxWidth="Infinity" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </items>
+      </SplitPane>
+      <TitledPane text="Console Log" VBox.vgrow="NEVER">
+        <content>
+          <AnchorPane>
+               <children>
+                  <TextArea disable="true" editable="false" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </TitledPane>
+   </children>
+</VBox>
