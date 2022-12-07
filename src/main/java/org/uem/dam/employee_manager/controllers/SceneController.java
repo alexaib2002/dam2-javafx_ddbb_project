@@ -1,7 +1,6 @@
 package org.uem.dam.employee_manager.controllers;
 
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import org.uem.dam.employee_manager.MainApplication;
 
 public abstract class SceneController {
@@ -23,5 +22,9 @@ public abstract class SceneController {
 
     protected final void requestSceneChange(Node node) {
         mainApplication.changeRootScene(node);
+    }
+
+    protected final void requestPopupDialogScene(String scene, String title, String header) {
+        mainApplication.popupDialogScene(scene, title, header);
     }
 }

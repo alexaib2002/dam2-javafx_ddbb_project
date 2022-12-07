@@ -56,7 +56,6 @@ public class MainApplication extends Application {
             dialog.setResizable(true);
             dialog.setDialogPane(dialogPane);
             dialog.setTitle(title);
-            dialog.setHeaderText(header);
             dialog.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
