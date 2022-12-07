@@ -5,6 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -44,6 +46,19 @@ public class MainApplication extends Application {
             errorAlert.showAndWait();
         } catch (IllegalStateException e) {
             System.err.println(String.format("%s IllegalState with %s argument", e.getMessage(), scene));
+        }
+    }
+
+    public void popupDialogScene(String scene, String title, String header) {
+        try {
+            DialogPane dialogPane = (DialogPane) loadScene(scene);
+            Dialog dialog = new Dialog();
+            dialog.setDialogPane(dialogPane);
+            dialog.setTitle(title);
+            dialog.setHeaderText(header);
+            dialog.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
