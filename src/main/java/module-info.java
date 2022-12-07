@@ -7,6 +7,7 @@ module com.example.employee_manager {
     requires net.synedra.validatorfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
+    requires javafx.web;
 
     opens org.uem.dam.employee_manager to javafx.fxml;
     exports org.uem.dam.employee_manager;

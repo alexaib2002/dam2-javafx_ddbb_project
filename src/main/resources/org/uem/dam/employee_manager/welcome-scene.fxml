@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.uem.dam.employee_manager.controllers.WelcomeScene">
    <bottom>
-      <Button mnemonicParsing="false" onAction="#onActionStartButton" text="Button" BorderPane.alignment="CENTER" />
+      <Button defaultButton="true" mnemonicParsing="false" onAction="#onActionStartButton" text="Access" textAlignment="CENTER" BorderPane.alignment="CENTER" />
    </bottom>
-   <center>
+   <top>
       <Label text="Welcome again!" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <WebView fx:id="welcomeWebView" prefHeight="-1.0" prefWidth="-1.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </BorderPane.margin></WebView>
    </center>
 </BorderPane>
