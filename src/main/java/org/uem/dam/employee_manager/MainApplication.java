@@ -53,6 +53,7 @@ public class MainApplication extends Application {
         try {
             DialogPane dialogPane = (DialogPane) loadScene(scene);
             Dialog dialog = new Dialog();
+            dialog.setResizable(true);
             dialog.setDialogPane(dialogPane);
             dialog.setTitle(title);
             dialog.setHeaderText(header);

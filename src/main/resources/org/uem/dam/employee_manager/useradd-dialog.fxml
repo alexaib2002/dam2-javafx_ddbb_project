@@ -2,13 +2,52 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<DialogPane headerText="Add user" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="480.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.uem.dam.employee_manager.controllers.UseraddDialog">
+<DialogPane headerText="Add user" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="397.0" prefWidth="435.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.uem.dam.employee_manager.controllers.UseraddDialog">
     <header>
-      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+      <AnchorPane minHeight="0.0" minWidth="0.0" />
     </header>
     <content>
-      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+      <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="0.0" minWidth="0.0">
+         <children>
+            <GridPane alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+               <children>
+                   <Label text="Employee Number" textAlignment="JUSTIFY" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" />
+                   <Spinner editable="true" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" />
+                   <Label text="Department Number" textAlignment="JUSTIFY" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="1" />
+                   <Spinner editable="true" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+                   <Label text="Birth Date" textAlignment="JUSTIFY" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="2" />
+                  <DatePicker maxHeight="-Infinity" maxWidth="1.7976931348623157E308" promptText="Select Birth Date" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+                   <Label text="First Name" textAlignment="JUSTIFY" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="3" />
+                   <TextField maxHeight="-Infinity" maxWidth="1.7976931348623157E308" promptText="Insert first name" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
+                   <Label text="Last Name" textAlignment="JUSTIFY" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="4" />
+                   <TextField maxHeight="-Infinity" maxWidth="1.7976931348623157E308" promptText="Insert last name" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" />
+                   <Label text="Gender" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.rowIndex="5" GridPane.rowSpan="2" GridPane.valignment="CENTER" />
+                  <RadioButton mnemonicParsing="false" text="Male" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="5">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="genderButtons" />
+                     </toggleGroup></RadioButton>
+                  <RadioButton mnemonicParsing="false" text="Female" toggleGroup="$genderButtons" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="6" />
+                   <Label text="Hire Date" textAlignment="JUSTIFY" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="7" />
+                   <DatePicker maxHeight="-Infinity" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" />
+               </children>
+               <columnConstraints>
+                  <ColumnConstraints />
+                  <ColumnConstraints />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+                  <RowConstraints />
+               </rowConstraints>
+            </GridPane>
+         </children>
+      </AnchorPane>
     </content>
    <buttonTypes>
       <ButtonType fx:constant="CANCEL" />
