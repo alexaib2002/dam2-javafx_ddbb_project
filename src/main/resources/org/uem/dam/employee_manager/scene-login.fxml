@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.uem.dam.employee_manager.controllers.LoginScene">
+   <children>
+      <BorderPane AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <top>
+            <VBox BorderPane.alignment="CENTER">
+               <children>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label maxWidth="1.7976931348623157E308" text="Login" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font size="48.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <FontIcon boundsType="LOGICAL_VERTICAL_CENTER" iconLiteral="mdi2l-login-variant" iconSize="64">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </FontIcon>
+                     </children>
+                  </HBox>
+                  <Label alignment="CENTER" maxWidth="1.7976931348623157E308" text="Please enter your DDBB credentials on the form below" />
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </VBox>
+         </top>
+         <bottom>
+            <Button mnemonicParsing="false" text="Log In" BorderPane.alignment="CENTER" />
+         </bottom>
+         <center>
+            <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+               <children>
+                  <Label text="Username" VBox.vgrow="ALWAYS" />
+                  <TextField VBox.vgrow="ALWAYS" />
+                  <Label layoutX="10.0" layoutY="10.0" text="Password" VBox.vgrow="ALWAYS" />
+                  <PasswordField VBox.vgrow="ALWAYS" />
+               </children>
+               <BorderPane.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </BorderPane.margin>
+            </VBox>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

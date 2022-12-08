@@ -26,7 +26,7 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         initRootScene(stage);
-        changeRootScene("scene-welcome.fxml");
+        changeRootScene("scene-login.fxml");
     }
 
     public Scene getScene() {
@@ -43,6 +43,8 @@ public class MainApplication extends Application {
             changeRootScene(loadScene(scene));
         } catch (IOException e) {
             Alert errorAlert = new Alert(Alert.AlertType.ERROR, "Couldn't update root scene");
+            errorAlert.setHeaderText("Error while updating app content");
+            errorAlert.setContentText(String.format("Cause: %s\non %s", e.getCause(), e.getMessage()));
             errorAlert.showAndWait();
         } catch (IllegalStateException e) {
             System.err.println(String.format("%s IllegalState with %s argument", e.getMessage(), scene));
