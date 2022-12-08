@@ -8,6 +8,8 @@ module com.example.employee_manager {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires javafx.web;
+    requires java.sql;
+    requires mysql.connector.j;
 
     opens org.uem.dam.employee_manager to javafx.fxml;
     exports org.uem.dam.employee_manager;
