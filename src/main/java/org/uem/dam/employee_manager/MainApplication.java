@@ -26,7 +26,7 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         initRootScene(stage);
-        changeRootScene("welcome-scene.fxml");
+        changeRootScene("scene-welcome.fxml");
     }
 
     public Scene getScene() {
@@ -71,7 +71,7 @@ public class MainApplication extends Application {
 
     private void initRootScene(Stage primaryStage) throws IOException {
         // instantiate root node
-        rootNode = (VBox) loadScene("root-scene.fxml");
+        rootNode = (VBox) loadScene("scene-root.fxml");
         // init main window
         scene = new Scene(rootNode, AppInfo.APP_SIZE[0], AppInfo.APP_SIZE[1]);
         primaryStage.setTitle(AppInfo.APP_NAME);

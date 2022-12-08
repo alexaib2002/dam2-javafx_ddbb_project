@@ -35,7 +35,7 @@ public class RootScene extends SceneController {
     }
 
     public void onAddMenuItemAction(ActionEvent actionEvent) {
-        requestPopupDialogScene("useradd-dialog.fxml", "Add new employee", "New employee data");
+        requestPopupDialogScene("dialog-useradd.fxml", "Add new employee", "New employee data");
     }
 
     public void onDeleteMenuItemAction(ActionEvent actionEvent) {
@@ -43,7 +43,7 @@ public class RootScene extends SceneController {
     }
 
     public void onFindMenuItemAction(ActionEvent actionEvent) {
-        requestPopupDialogScene("userfind-dialog.fxml", "Find employee", "Employee data");
+        requestPopupDialogScene("dialog-userfind.fxml", "Find employee", "Employee data");
     }
 
     public void onAboutMenuItemAction(ActionEvent actionEvent) {

@@ -16,6 +16,6 @@ public class WelcomeScene extends SceneController {
     }
 
     public void onActionStartButton() {
-        requestSceneChange("management-scene.fxml");
+        requestSceneChange("scene-management.fxml");
     }
 }
