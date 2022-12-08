@@ -36,15 +36,15 @@
             </VBox>
          </top>
          <bottom>
-            <Button mnemonicParsing="false" text="Log In" BorderPane.alignment="CENTER" />
+            <Button mnemonicParsing="false" text="Log In" onAction="#onLogInAction" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
             <VBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
                <children>
                   <Label text="Username" VBox.vgrow="ALWAYS" />
-                  <TextField VBox.vgrow="ALWAYS" />
+                  <TextField fx:id="usernameTextField" VBox.vgrow="ALWAYS" />
                   <Label layoutX="10.0" layoutY="10.0" text="Password" VBox.vgrow="ALWAYS" />
-                  <PasswordField VBox.vgrow="ALWAYS" />
+                  <PasswordField fx:id="passwordTextField" VBox.vgrow="ALWAYS" />
                </children>
                <BorderPane.margin>
                   <Insets bottom="10.0" top="10.0" />
