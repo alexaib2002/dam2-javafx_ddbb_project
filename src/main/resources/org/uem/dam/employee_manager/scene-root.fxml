@@ -9,20 +9,20 @@
             <menus>
                 <Menu mnemonicParsing="false" text="Database">
                     <items>
-                        <MenuItem fx:id="switchUserMenuItem" mnemonicParsing="false" onAction="#onSwitchUserMenuItemAction" text="Switch User" />
-                        <MenuItem fx:id="logOutMenuItem" mnemonicParsing="false" onAction="#onLogOutMenuItemAction" text="Log Out" />
+                        <MenuItem fx:id="switchUserMenuItem" mnemonicParsing="false" onAction="#onSwitchUserMenuAction" text="Switch User" />
+                        <MenuItem fx:id="logOutMenuItem" mnemonicParsing="false" onAction="#onLogOutMenuAction" text="Log Out" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Edit">
                     <items>
-                        <MenuItem fx:id="addMenuItem" mnemonicParsing="false" onAction="#onAddMenuItemAction" text="Add" />
-                  <MenuItem fx:id="deleteMenuItem" mnemonicParsing="false" onAction="#onDeleteMenuItemAction" text="Delete" />
-                  <MenuItem fx:id="findMenuItem" mnemonicParsing="false" onAction="#onFindMenuItemAction" text="Find" />
+                        <MenuItem fx:id="addMenuItem" mnemonicParsing="false" onAction="#onAddMenuAction" text="Add" />
+                  <MenuItem fx:id="deleteMenuItem" mnemonicParsing="false" onAction="#onDeleteMenuAction" text="Delete" />
+                  <MenuItem fx:id="findMenuItem" mnemonicParsing="false" onAction="#onFindMenuAction" text="Find" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#onAboutMenuItemAction" text="About" />
+                        <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#onAboutMenuAction" text="About" />
                     </items>
                 </Menu>
             </menus>

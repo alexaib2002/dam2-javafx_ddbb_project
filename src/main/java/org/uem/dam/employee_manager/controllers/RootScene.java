@@ -26,27 +26,27 @@ public class RootScene extends SceneController {
 
     }
 
-    public void onSwitchUserMenuItemAction(ActionEvent actionEvent) {
+    public void onSwitchUserMenuAction(ActionEvent actionEvent) {
         System.err.println("switch not implemented");
     }
 
-    public void onLogOutMenuItemAction(ActionEvent actionEvent) {
+    public void onLogOutMenuAction(ActionEvent actionEvent) {
         System.err.println("logout not implemented");
     }
 
-    public void onAddMenuItemAction(ActionEvent actionEvent) {
+    public void onAddMenuAction(ActionEvent actionEvent) {
         requestPopupDialogScene("dialog-useradd.fxml", "Add new employee", "New employee data");
     }
 
-    public void onDeleteMenuItemAction(ActionEvent actionEvent) {
+    public void onDeleteMenuAction(ActionEvent actionEvent) {
         System.err.println("user deletion not implemented yet");
     }
 
-    public void onFindMenuItemAction(ActionEvent actionEvent) {
+    public void onFindMenuAction(ActionEvent actionEvent) {
         requestPopupDialogScene("dialog-userfind.fxml", "Find employee", "Employee data");
     }
 
-    public void onAboutMenuItemAction(ActionEvent actionEvent) {
+    public void onAboutMenuAction(ActionEvent actionEvent) {
         System.err.println("about info not implemented yet");
     }
 }
