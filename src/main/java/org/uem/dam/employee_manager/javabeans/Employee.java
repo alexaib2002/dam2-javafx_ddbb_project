@@ -2,7 +2,7 @@ package org.uem.dam.employee_manager.javabeans;
 
 public record Employee(
         int employeeNo,
-        int deptNo,
+        String deptNo,
         String birthDate,
         String firstName,
         String lastName,

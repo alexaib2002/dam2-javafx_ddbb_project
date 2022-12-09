@@ -10,6 +10,7 @@ module com.example.employee_manager {
     requires javafx.web;
     requires java.sql;
     requires mysql.connector.j;
+    requires org.jetbrains.annotations;
 
     opens org.uem.dam.employee_manager to javafx.fxml;
     exports org.uem.dam.employee_manager;

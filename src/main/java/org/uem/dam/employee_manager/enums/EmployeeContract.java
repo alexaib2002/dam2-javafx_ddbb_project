@@ -13,7 +13,7 @@ public enum EmployeeContract {
             employeeCellDataFeatures -> new ReadOnlyIntegerWrapper(employeeCellDataFeatures.getValue().employeeNo()).asObject()
     ),
     DEPT_NO(
-            employeeCellDataFeatures -> new ReadOnlyIntegerWrapper(employeeCellDataFeatures.getValue().deptNo()).asObject()
+            employeeCellDataFeatures -> new ReadOnlyStringWrapper(employeeCellDataFeatures.getValue().deptNo())
     ),
     BIRTH_DATE(
             employeeCellDataFeatures -> new ReadOnlyStringWrapper(employeeCellDataFeatures.getValue().birthDate())

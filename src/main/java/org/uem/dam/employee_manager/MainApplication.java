@@ -10,14 +10,19 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import org.jetbrains.annotations.NotNull;
 import org.uem.dam.employee_manager.controllers.SceneController;
+import org.uem.dam.employee_manager.persistence.DBConnection;
+import org.uem.dam.employee_manager.persistence.DBPersistence;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 public class MainApplication extends Application {
 
     private VBox rootNode;
     private Scene scene;
+    private DBPersistence dbPersistence;
 
     public static void main(String[] args) {
         launch();
@@ -26,6 +31,7 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         initRootScene(stage);
+        initDBPersistence();
         changeRootScene("scene-login.fxml");
     }
 
@@ -71,7 +77,7 @@ public class MainApplication extends Application {
         return sceneRootNode;
     }
 
-    private void initRootScene(Stage primaryStage) throws IOException {
+    private void initRootScene(@NotNull Stage primaryStage) throws IOException {
         // instantiate root node
         rootNode = (VBox) loadScene("scene-root.fxml");
         // init main window
@@ -79,5 +85,21 @@ public class MainApplication extends Application {
         primaryStage.setTitle(AppInfo.APP_NAME);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    private void initDBPersistence() {
+        // should be triggered after login
+        try {
+            dbPersistence = new DBPersistence(new DBConnection("employees", "root", "1234"));
+        } catch (ClassNotFoundException | InvocationTargetException | NoSuchMethodException | InstantiationException |
+                 IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+        // FIXME enable for debug
+//        try {
+//            dbPersistence.getEmployees();
+//        } catch (SQLException e) {
+//            throw new RuntimeException(e);
+//        }
     }
 }
