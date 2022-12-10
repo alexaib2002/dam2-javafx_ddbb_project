@@ -19,10 +19,9 @@ public class DBConnection {
     }
 
     public Connection getConnection() throws SQLException {
-        // FIXME setup proper connection with docker
         System.out.println("(Warning) Unsafe connection to database");
-        //localhost:3306
-        return DriverManager.getConnection(String.format("jdbc:mysql://192.168.122.90:30306/%s?user=%s&password=%s",
+        // allow user to select host??
+        return DriverManager.getConnection(String.format("jdbc:mysql://localhost:30306/%s?user=%s&password=%s",
                 dbname, username, password));
     }
 }

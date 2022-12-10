@@ -17,6 +17,7 @@ import org.uem.dam.employee_manager.persistence.DBPersistence;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
+import java.sql.SQLException;
 
 public class MainApplication extends Application {
 
@@ -31,12 +32,15 @@ public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         initRootScene(stage);
-        initDBPersistence();
         changeRootScene("scene-login.fxml");
     }
 
     public Scene getScene() {
         return scene;
+    }
+
+    public DBPersistence getDbPersistence() {
+        return dbPersistence;
     }
 
     public void changeRootScene(Node node) {
@@ -70,6 +74,15 @@ public class MainApplication extends Application {
         }
     }
 
+    public void startDBPersistence(String dbname, String username, String password) throws SQLException {
+        try {
+            dbPersistence = new DBPersistence(new DBConnection(dbname, username, password));
+        } catch (ClassNotFoundException | InvocationTargetException | NoSuchMethodException | InstantiationException |
+                 IllegalAccessException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private Node loadScene(String sceneRes) throws IOException {
         FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource(sceneRes));
         Node sceneRootNode = loader.load();
@@ -85,21 +98,5 @@ public class MainApplication extends Application {
         primaryStage.setTitle(AppInfo.APP_NAME);
         primaryStage.setScene(scene);
         primaryStage.show();
-    }
-
-    private void initDBPersistence() {
-        // should be triggered after login
-        try {
-            dbPersistence = new DBPersistence(new DBConnection("employees", "root", "1234"));
-        } catch (ClassNotFoundException | InvocationTargetException | NoSuchMethodException | InstantiationException |
-                 IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-        // FIXME enable for debug
-//        try {
-//            dbPersistence.getEmployees();
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
     }
 }

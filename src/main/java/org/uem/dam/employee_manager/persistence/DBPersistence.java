@@ -10,8 +10,9 @@ import java.util.ArrayList;
 public class DBPersistence {
     private DBConnection dbConnection;
 
-    public DBPersistence(DBConnection dbConnection) {
+    public DBPersistence(DBConnection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
+        dbConnection.getConnection().close();
     }
 
     public ArrayList<Employee> getEmployees() throws SQLException {
@@ -20,9 +21,8 @@ public class DBPersistence {
         ResultSet rs = null;
         try {
             stmt = dbConnection.getConnection().createStatement();
-//            rs = stmt.executeQuery("SELECT employees.emp_no,dept_no,birth_date,first_name,last_name,gender,hire_date FROM employees.employees,employees.dept_emp;");
-            //FIXME hotfix for reaching heap limit
-            rs = stmt.executeQuery("SELECT employees.emp_no,dept_no,birth_date,first_name,last_name,gender,hire_date FROM employees.employees,employees.dept_emp LIMIT 0,10;");
+            // FIXME loads too much data, will saturate the application
+            rs = stmt.executeQuery("SELECT employees.emp_no,dept_no,birth_date,first_name,last_name,gender,hire_date FROM employees.employees,employees.dept_emp;");
             while (rs.next()) {
                 employees.add(new Employee(
                         rs.getInt("emp_no"),
