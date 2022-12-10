@@ -10,7 +10,8 @@ public class WelcomeScene extends SceneController {
 
     @Override
     protected void onControllerLoaded() {
-        welcomeLabel.setText(String.format(welcomeLabel.getText(), getDbPersistence().getDbConnection().getUsername()));
+        welcomeLabel.setText(String.format(welcomeLabel.getText(), getDbHelper().getDbPersistence()
+                .getDbConnection().getUsername()));
     }
 
     public void onActionStartButton() {

@@ -12,18 +12,15 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
 import org.uem.dam.employee_manager.controllers.SceneController;
-import org.uem.dam.employee_manager.persistence.DBConnection;
-import org.uem.dam.employee_manager.persistence.DBPersistence;
+import org.uem.dam.employee_manager.persistence.DBHelper;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.sql.SQLException;
 
 public class MainApplication extends Application {
 
     private VBox rootNode;
     private Scene scene;
-    private DBPersistence dbPersistence;
+    private final DBHelper dbHelper = new DBHelper();
 
     public static void main(String[] args) {
         launch();
@@ -39,8 +36,8 @@ public class MainApplication extends Application {
         return scene;
     }
 
-    public DBPersistence getDbPersistence() {
-        return dbPersistence;
+    public DBHelper getDbHelper() {
+        return dbHelper;
     }
 
     public void changeRootScene(Node node) {
@@ -72,20 +69,6 @@ public class MainApplication extends Application {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public void startDBPersistence(String dbname, String username, String password) throws SQLException {
-        try {
-            // FIXME hardcoded host
-            dbPersistence = new DBPersistence(new DBConnection("SatelliteP50C", 30306, dbname, username, password));
-        } catch (ClassNotFoundException | InvocationTargetException | NoSuchMethodException | InstantiationException |
-                 IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void endDBPersistence() {
-        dbPersistence = null;
     }
 
     private Node loadScene(String sceneRes) throws IOException {

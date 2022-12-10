@@ -14,13 +14,13 @@ public class LoginScene extends SceneController {
 
     @Override
     protected void onControllerLoaded() {
-
     }
 
 
     public void onLogInAction(ActionEvent actionEvent) {
         try {
-            startDBPersistence("employees", usernameTextField.getText(), passwordTextField.getText());
+            getDbHelper()
+                    .startDBPersistence("employees", usernameTextField.getText(), passwordTextField.getText());
             requestSceneChange("scene-welcome.fxml");
         } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK);

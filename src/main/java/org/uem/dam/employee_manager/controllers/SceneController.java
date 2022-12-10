@@ -1,10 +1,7 @@
 package org.uem.dam.employee_manager.controllers;
 
-import javafx.scene.Node;
 import org.uem.dam.employee_manager.MainApplication;
-import org.uem.dam.employee_manager.persistence.DBPersistence;
-
-import java.sql.SQLException;
+import org.uem.dam.employee_manager.persistence.DBHelper;
 
 public abstract class SceneController {
     private MainApplication mainApplication;
@@ -23,23 +20,11 @@ public abstract class SceneController {
         mainApplication.changeRootScene(scene);
     }
 
-    protected final void requestSceneChange(Node node) {
-        mainApplication.changeRootScene(node);
-    }
-
     protected final void requestPopupDialogScene(String scene, String title, String header) {
         mainApplication.popupDialogScene(scene, title, header);
     }
 
-    protected final void startDBPersistence(String dbname, String username, String password) throws SQLException {
-        mainApplication.startDBPersistence(dbname, username, password);
-    }
-
-    protected final void endDBPersistence() {
-        mainApplication.endDBPersistence();
-    }
-
-    protected final DBPersistence getDbPersistence() {
-        return mainApplication.getDbPersistence();
+    protected final DBHelper getDbHelper() {
+        return mainApplication.getDbHelper();
     }
 }

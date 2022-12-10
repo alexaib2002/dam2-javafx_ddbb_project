@@ -26,7 +26,7 @@ public class RootScene extends SceneController {
 
     public void onLogOutMenuAction(ActionEvent actionEvent) {
         requestSceneChange("scene-login.fxml");
-        endDBPersistence();
+        getDbHelper().endDBPersistence();
     }
 
     public void onAddMenuAction(ActionEvent actionEvent) {
