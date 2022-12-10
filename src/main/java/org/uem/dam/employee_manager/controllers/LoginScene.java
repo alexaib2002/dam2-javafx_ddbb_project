@@ -12,11 +12,6 @@ public class LoginScene extends SceneController {
     public TextField usernameTextField;
     public PasswordField passwordTextField;
 
-    @Override
-    protected void onControllerLoaded() {
-    }
-
-
     public void onLogInAction(ActionEvent actionEvent) {
         try {
             getDbHelper()

@@ -19,11 +19,6 @@ public class RootScene extends SceneController {
     @FXML
     public BorderPane rootChildScenePane;
 
-    @Override
-    protected void onControllerLoaded() {
-
-    }
-
     public void onLogOutMenuAction(ActionEvent actionEvent) {
         requestSceneChange("scene-login.fxml");
         getDbHelper().endDBPersistence();

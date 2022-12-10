@@ -11,10 +11,10 @@ public abstract class SceneController {
             throw new RuntimeException("Trying to set mainApplication, but it has been already defined");
         }
         this.mainApplication = mainApplication;
-        onControllerLoaded();
+        if (this instanceof InitializableController) {
+            ((InitializableController) this).onControllerLoaded();
+        }
     }
-
-    protected abstract void onControllerLoaded();
 
     protected final void requestSceneChange(String scene) {
         mainApplication.changeRootScene(scene);

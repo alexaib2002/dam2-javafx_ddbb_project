@@ -11,7 +11,7 @@ import org.uem.dam.employee_manager.javabeans.Employee;
 
 import java.sql.SQLException;
 
-public class ManagementScene extends SceneController {
+public class ManagementScene extends SceneController implements InitializableController {
 
     public static final float COLUMN_WIDTH = 100f;
     @FXML
@@ -21,8 +21,7 @@ public class ManagementScene extends SceneController {
 
     private final ObservableList<Employee> dataEmployees = FXCollections.observableArrayList();
 
-    @Override
-    protected void onControllerLoaded() {
+    public void onControllerLoaded() {
         // side panel
 //        detailsTitledPane.minWidthProperty().bind(contentTableScrollPane.minHeightProperty());
 //        detailsTitledPane.maxWidthProperty().bind(contentTableScrollPane.maxHeightProperty());
