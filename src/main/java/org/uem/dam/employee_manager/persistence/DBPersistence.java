@@ -1,5 +1,6 @@
 package org.uem.dam.employee_manager.persistence;
 
+import org.jetbrains.annotations.NotNull;
 import org.uem.dam.employee_manager.javabeans.Employee;
 
 import java.sql.ResultSet;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 public class DBPersistence {
     private final DBConnection dbConnection;
 
-    public DBPersistence(DBConnection dbConnection) throws SQLException {
+    public DBPersistence(@NotNull DBConnection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
         dbConnection.getConnection().createStatement().execute("USE employees;");
     }

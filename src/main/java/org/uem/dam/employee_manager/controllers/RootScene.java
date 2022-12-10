@@ -7,8 +7,6 @@ import javafx.scene.layout.BorderPane;
 
 public class RootScene extends SceneController {
     @FXML
-    public MenuItem switchUserMenuItem;
-    @FXML
     public MenuItem logOutMenuItem;
     @FXML
     public MenuItem addMenuItem;
@@ -26,12 +24,9 @@ public class RootScene extends SceneController {
 
     }
 
-    public void onSwitchUserMenuAction(ActionEvent actionEvent) {
-        System.err.println("switch not implemented");
-    }
-
     public void onLogOutMenuAction(ActionEvent actionEvent) {
-        System.err.println("logout not implemented");
+        requestSceneChange("scene-login.fxml");
+        endDBPersistence();
     }
 
     public void onAddMenuAction(ActionEvent actionEvent) {

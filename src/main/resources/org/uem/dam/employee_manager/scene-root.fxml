@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
+
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="358.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.uem.dam.employee_manager.controllers.RootScene">
     <children>
         <MenuBar prefHeight="0.0" prefWidth="352.0">
             <menus>
                 <Menu mnemonicParsing="false" text="Database">
                     <items>
-                        <MenuItem fx:id="switchUserMenuItem" mnemonicParsing="false" onAction="#onSwitchUserMenuAction" text="Switch User" />
                         <MenuItem fx:id="logOutMenuItem" mnemonicParsing="false" onAction="#onLogOutMenuAction" text="Log Out" />
                     </items>
                 </Menu>

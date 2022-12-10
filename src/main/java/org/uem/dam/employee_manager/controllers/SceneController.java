@@ -35,6 +35,10 @@ public abstract class SceneController {
         mainApplication.startDBPersistence(dbname, username, password);
     }
 
+    protected final void endDBPersistence() {
+        mainApplication.endDBPersistence();
+    }
+
     protected final DBPersistence getDbPersistence() {
         return mainApplication.getDbPersistence();
     }

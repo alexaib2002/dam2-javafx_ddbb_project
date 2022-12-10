@@ -77,11 +77,15 @@ public class MainApplication extends Application {
     public void startDBPersistence(String dbname, String username, String password) throws SQLException {
         try {
             // FIXME hardcoded host
-            dbPersistence = new DBPersistence(new DBConnection("satellitep50c", 30306, dbname, username, password));
+            dbPersistence = new DBPersistence(new DBConnection("SatelliteP50C", 30306, dbname, username, password));
         } catch (ClassNotFoundException | InvocationTargetException | NoSuchMethodException | InstantiationException |
                  IllegalAccessException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void endDBPersistence() {
+        dbPersistence = null;
     }
 
     private Node loadScene(String sceneRes) throws IOException {
