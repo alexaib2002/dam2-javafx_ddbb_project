@@ -6,13 +6,17 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DBConnection {
+    private String host;
+    private int port;
     private String dbname;
     private String username;
     private String password;
 
-    public DBConnection(String dbname, String username, String password) throws ClassNotFoundException,
+    public DBConnection(String host, int port, String dbname, String username, String password) throws ClassNotFoundException,
             NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
         Class.forName("com.mysql.cj.jdbc.Driver").getDeclaredConstructor().newInstance();
+        this.host = host;
+        this.port = port;
         this.dbname = dbname;
         this.username = username;
         this.password = password;
@@ -20,8 +24,27 @@ public class DBConnection {
 
     public Connection getConnection() throws SQLException {
         System.out.println("(Warning) Unsafe connection to database");
-        // allow user to select host??
-        return DriverManager.getConnection(String.format("jdbc:mysql://localhost:30306/%s?user=%s&password=%s",
-                dbname, username, password));
+        return DriverManager.getConnection(String.format("jdbc:mysql://%s:%s/%s?user=%s&password=%s",
+                host, port, dbname, username, password));
+    }
+
+    public String getHost() {
+        return host;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public String getDbname() {
+        return dbname;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
     }
 }

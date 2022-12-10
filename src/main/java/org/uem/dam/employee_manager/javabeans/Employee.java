@@ -6,7 +6,7 @@ public record Employee(
         String birthDate,
         String firstName,
         String lastName,
-        boolean gender,
+        String gender,
         String hireDate
 ) {
 }

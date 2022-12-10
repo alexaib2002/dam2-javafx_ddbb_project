@@ -76,7 +76,8 @@ public class MainApplication extends Application {
 
     public void startDBPersistence(String dbname, String username, String password) throws SQLException {
         try {
-            dbPersistence = new DBPersistence(new DBConnection(dbname, username, password));
+            // FIXME hardcoded host
+            dbPersistence = new DBPersistence(new DBConnection("satellitep50c", 30306, dbname, username, password));
         } catch (ClassNotFoundException | InvocationTargetException | NoSuchMethodException | InstantiationException |
                  IllegalAccessException e) {
             throw new RuntimeException(e);

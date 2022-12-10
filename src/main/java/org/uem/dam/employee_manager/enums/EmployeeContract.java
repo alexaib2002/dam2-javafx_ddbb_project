@@ -1,6 +1,5 @@
 package org.uem.dam.employee_manager.enums;
 
-import javafx.beans.property.ReadOnlyBooleanWrapper;
 import javafx.beans.property.ReadOnlyIntegerWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.beans.value.ObservableValue;
@@ -25,7 +24,7 @@ public enum EmployeeContract {
             employeeCellDataFeatures -> new ReadOnlyStringWrapper(employeeCellDataFeatures.getValue().lastName())
     ),
     GENDER(
-            employeeCellDataFeatures -> new ReadOnlyBooleanWrapper(employeeCellDataFeatures.getValue().gender())
+            employeeCellDataFeatures -> new ReadOnlyStringWrapper(employeeCellDataFeatures.getValue().gender())
     ),
     HIRE_DATE(
             employeeCellDataFeatures -> new ReadOnlyStringWrapper(employeeCellDataFeatures.getValue().hireDate())

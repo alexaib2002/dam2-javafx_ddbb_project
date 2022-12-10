@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/src/main/java/org/uem/dam/employee_manager/persistence/DBPersistence.java" dialect="GenericSQL" />
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/d73b5204-4bb9-4f2c-8f62-b178193c9cb7/console.sql" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/uem/dam/employee_manager/persistence/DBPersistence.java" dialect="MySQL" />
   </component>
 </project>

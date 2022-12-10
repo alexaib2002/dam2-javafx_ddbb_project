@@ -8,21 +8,27 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class DBPersistence {
-    private DBConnection dbConnection;
+    private final DBConnection dbConnection;
 
     public DBPersistence(DBConnection dbConnection) throws SQLException {
         this.dbConnection = dbConnection;
-        dbConnection.getConnection().close();
+        dbConnection.getConnection().createStatement().execute("USE employees;");
     }
 
-    public ArrayList<Employee> getEmployees() throws SQLException {
+    public DBConnection getDbConnection() {
+        return dbConnection;
+    }
+
+    public ArrayList<Employee> queryEmployees() throws SQLException {
         ArrayList<Employee> employees = new ArrayList<>();
         Statement stmt = null;
         ResultSet rs = null;
         try {
             stmt = dbConnection.getConnection().createStatement();
-            // FIXME loads too much data, will saturate the application
-            rs = stmt.executeQuery("SELECT employees.emp_no,dept_no,birth_date,first_name,last_name,gender,hire_date FROM employees.employees,employees.dept_emp;");
+            rs = stmt.executeQuery("SELECT dept_emp.emp_no,dept_no,e.birth_date,e.first_name,e.last_name,e.gender,e.hire_date\n" +
+                    "FROM dept_emp\n" +
+                    "JOIN employees e on dept_emp.emp_no = e.emp_no\n" +
+                    "LIMIT 0,500;"); // FIXME variable limit query size
             while (rs.next()) {
                 employees.add(new Employee(
                         rs.getInt("emp_no"),
@@ -30,10 +36,9 @@ public class DBPersistence {
                         rs.getDate("birth_date").toString(),
                         rs.getString("first_name"),
                         rs.getString("last_name"),
-                        rs.getString("gender").equals("M"),
+                        rs.getString("gender"),
                         rs.getDate("hire_date").toString()
                 ));
-
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -74,7 +79,7 @@ public class DBPersistence {
                     employee.birthDate(),
                     employee.firstName(),
                     employee.lastName(),
-                    employee.gender() ? "M" : "F",
+                    employee.gender(),
                     employee.hireDate()
             ));
         } catch (SQLException e) {
@@ -97,7 +102,7 @@ public class DBPersistence {
                     employee.birthDate(),
                     employee.firstName(),
                     employee.lastName(),
-                    employee.gender() ? "M" : "F",
+                    employee.gender(),
                     employee.hireDate()
             ));
         } catch (SQLException e) {

@@ -46,7 +46,7 @@ public class ManagementScene extends SceneController {
     private void updateEmployees() {
         dataEmployees.clear();
         try {
-            dataEmployees.addAll(getDbPersistence().getEmployees());
+            dataEmployees.addAll(getDbPersistence().queryEmployees());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
