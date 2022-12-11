@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import javafx.scene.control.DialogPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.VBox?>
 <DialogPane xmlns:fx="http://javafx.com/fxml/1" fx:id="dialogPane" xmlns="http://javafx.com/javafx/17.0.2-ea"
-            fx:controller="org.uem.dam.employee_manager.controllers.UserfindDialog"/>
+            fx:controller="org.uem.dam.employee_manager.controllers.UserfindDialog">
+   <content>
+      <VBox>
+         <children>
+            <Label text="Employee Number"/>
+            <Spinner fx:id="empNoInput" editable="true" maxHeight="-Infinity" maxWidth="1.7976931348623157E308"
+                     GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
+               <valueFactory>
+                  <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="0" max="1000000" min="0"/>
+               </valueFactory>
+            </Spinner>
+         </children>
+      </VBox>
+   </content>
+   <buttonTypes>
+      <ButtonType fx:constant="FINISH"/>
+      <ButtonType fx:constant="CANCEL"/>
+   </buttonTypes>
+</DialogPane>

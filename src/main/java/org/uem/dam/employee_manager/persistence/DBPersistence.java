@@ -53,12 +53,11 @@ public class DBPersistence {
         return employees;
     }
 
-    // FIXME not tested yet
     public void removeEmployee(int employeeNo) throws SQLException {
         Statement stmt = null;
         try {
             stmt = dbConnection.getConnection().createStatement();
-            stmt.executeUpdate(String.format("DELETE FROM employees.employees WHERE emp_no = %d;", employeeNo));
+            stmt.executeUpdate(String.format("DELETE FROM employees WHERE emp_no = %s;", employeeNo));
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -66,6 +65,40 @@ public class DBPersistence {
                 stmt.close();
             }
         }
+    }
+
+    public Employee searchEmployee(Integer employeeNo) throws SQLException {
+        Statement stmt = null;
+        ResultSet rs = null;
+        Employee employee = null;
+        try {
+            stmt = dbConnection.getConnection().createStatement();
+            rs = stmt.executeQuery(String.format(
+                    "SELECT dept_emp.emp_no,dept_no,e.birth_date,e.first_name,e.last_name,e.gender,e.hire_date " +
+                            "FROM dept_emp " +
+                            "JOIN employees e ON dept_emp.emp_no = e.emp_no " +
+                            "WHERE e.emp_no = %s;", employeeNo));
+            while (rs.next()) {
+                if (employee == null)
+                    employee = new Employee(
+                            rs.getInt("emp_no"),
+                            rs.getString("dept_no"),
+                            rs.getDate("birth_date").toString(),
+                            rs.getString("first_name"),
+                            rs.getString("last_name"),
+                            rs.getString("gender"),
+                            rs.getDate("hire_date").toString());
+                else
+                    System.err.println("More than one employee with same primary key!!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+        }
+        return employee;
     }
 
     public void addEmployee(@NotNull Employee employee) throws SQLException {
@@ -95,19 +128,19 @@ public class DBPersistence {
         }
     }
 
-    // FIXME not tested yet
     public void updateEmployee(Employee employee) throws SQLException {
         Statement stmt = null;
         try {
             stmt = dbConnection.getConnection().createStatement();
-            stmt.executeUpdate(String.format("UPDATE employees.employees SET dept_no = '%s', birth_date = '%s', first_name = '%s', last_name = '%s', gender = '%s', hire_date = '%s' WHERE emp_no = %d;",
-                    employee.deptNo(),
-                    employee.deptNo(),
+            stmt.executeUpdate(String.format("UPDATE employees.employees " +
+                            "SET birth_date = '%s', first_name = '%s', last_name = '%s', gender = '%s', hire_date = '%s' " +
+                            "WHERE emp_no = %s;",
                     employee.birthDate(),
                     employee.firstName(),
                     employee.lastName(),
                     employee.gender(),
-                    employee.hireDate()
+                    employee.hireDate(),
+                    employee.employeeNo()
             ));
         } catch (SQLException e) {
             e.printStackTrace();

@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.*?>
 <DialogPane xmlns:fx="http://javafx.com/fxml/1" fx:id="dialogPane" headerText="Add user"
             maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
-            minWidth="-Infinity" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            minWidth="-Infinity"
+            prefHeight="361.0" prefWidth="432.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
             fx:controller="org.uem.dam.employee_manager.controllers.UseraddDialog">
     <header>
         <AnchorPane minHeight="0.0" minWidth="0.0"/>
@@ -29,12 +30,12 @@
                         <Label text="Department Number" textAlignment="JUSTIFY" GridPane.halignment="LEFT"
                                GridPane.hgrow="NEVER" GridPane.rowIndex="1"/>
                         <TextField fx:id="deptNoInput" editable="true" maxHeight="-Infinity"
-                                   maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"
-                                   GridPane.rowIndex="1"/>
+                                   maxWidth="1.7976931348623157E308" promptText="d001" GridPane.columnIndex="1"
+                                   GridPane.hgrow="ALWAYS" GridPane.rowIndex="1"/>
                         <Label text="Birth Date" textAlignment="JUSTIFY" GridPane.halignment="LEFT"
                                GridPane.hgrow="NEVER" GridPane.rowIndex="2"/>
                         <DatePicker fx:id="birthDateInput" maxHeight="-Infinity" maxWidth="1.7976931348623157E308"
-                                    promptText="Select Birth Date" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"
+                                    promptText="mm/dd/yyyyy" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"
                                     GridPane.rowIndex="2"/>
                         <Label text="First Name" textAlignment="JUSTIFY" GridPane.halignment="LEFT"
                                GridPane.hgrow="NEVER" GridPane.rowIndex="3"/>
@@ -50,14 +51,19 @@
                                GridPane.rowSpan="2" GridPane.valignment="CENTER"/>
                         <RadioButton mnemonicParsing="false" text="Male" GridPane.columnIndex="1"
                                      GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="5">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="genderButtons" />
-                     </toggleGroup></RadioButton>
-                  <RadioButton mnemonicParsing="false" text="Female" toggleGroup="$genderButtons" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="6" />
-                   <Label text="Hire Date" textAlignment="JUSTIFY" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="7" />
+                            <toggleGroup>
+                                <ToggleGroup fx:id="genderButtons"/>
+                            </toggleGroup>
+                        </RadioButton>
+                        <RadioButton mnemonicParsing="false" text="Female" toggleGroup="$genderButtons"
+                                     GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER"
+                                     GridPane.rowIndex="6"/>
+                        <Label text="Hire Date" textAlignment="JUSTIFY" GridPane.halignment="LEFT"
+                               GridPane.hgrow="NEVER" GridPane.rowIndex="7"/>
                         <DatePicker fx:id="hireDateInput" maxHeight="-Infinity" maxWidth="1.7976931348623157E308"
-                                    GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7"/>
-               </children>
+                                    promptText="mm/dd/yyyyy" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"
+                                    GridPane.rowIndex="7"/>
+                    </children>
                <columnConstraints>
                   <ColumnConstraints />
                   <ColumnConstraints />
