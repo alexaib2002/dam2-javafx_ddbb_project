@@ -28,8 +28,7 @@ public class DBPersistence {
             stmt = dbConnection.getConnection().createStatement();
             rs = stmt.executeQuery("SELECT dept_emp.emp_no,dept_no,e.birth_date,e.first_name,e.last_name,e.gender,e.hire_date\n" +
                     "FROM dept_emp\n" +
-                    "JOIN employees e on dept_emp.emp_no = e.emp_no\n" +
-                    "LIMIT 0,500;"); // FIXME variable limit query size
+                    "JOIN employees e on dept_emp.emp_no = e.emp_no;");
             while (rs.next()) {
                 employees.add(new Employee(
                         rs.getInt("emp_no"),
@@ -69,19 +68,23 @@ public class DBPersistence {
         }
     }
 
-    // FIXME not tested yet
-    public void addEmployee(Employee employee) throws SQLException {
+    public void addEmployee(@NotNull Employee employee) throws SQLException {
         Statement stmt = null;
         try {
             stmt = dbConnection.getConnection().createStatement();
-            stmt.executeUpdate(String.format("INSERT INTO employees.employees VALUES (%d, '%s', '%s', '%s', '%s', '%s', '%s');",
+            stmt.executeUpdate(String.format("INSERT INTO employees.employees VALUES (%d, '%s', '%s', '%s', '%s', '%s');",
                     employee.employeeNo(),
-                    employee.deptNo(),
                     employee.birthDate(),
                     employee.firstName(),
                     employee.lastName(),
                     employee.gender(),
                     employee.hireDate()
+            ));
+            stmt.executeUpdate(String.format("INSERT INTO employees.dept_emp VALUES (%d, '%s', '%s', '%s');",
+                    employee.employeeNo(),
+                    employee.deptNo(),
+                    employee.hireDate(),
+                    "9999-01-01"
             ));
         } catch (SQLException e) {
             e.printStackTrace();

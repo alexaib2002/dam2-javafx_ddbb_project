@@ -7,6 +7,9 @@ public class DBHelper {
     private DBPersistence dbPersistence;
 
     public DBPersistence getDbPersistence() {
+        if (dbPersistence == null) {
+            System.err.println("FATAL: DBPersistence is not initialized");
+        }
         return dbPersistence;
     }
 

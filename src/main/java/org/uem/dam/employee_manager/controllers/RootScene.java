@@ -2,9 +2,13 @@ package org.uem.dam.employee_manager.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
+import org.uem.dam.employee_manager.javabeans.Employee;
+
+import java.sql.SQLException;
+import java.util.Optional;
 
 public class RootScene extends SceneController {
     @FXML
@@ -26,15 +30,16 @@ public class RootScene extends SceneController {
     }
 
     public void onAddMenuAction(ActionEvent actionEvent) {
-        if (getSceneHelper()
-                .popupDialogScene("dialog-useradd.fxml", "Add new employee", "New employee data"
-        (ButtonType button) -> {
-                   return null;
-        })
-                .get() == ButtonType.OK) {
-
-        } else {
-
+        // FIXME refactor popupDialogScene into its own class so we can use generics
+        Optional<Employee> result = getSceneHelper()
+                .popupDialogScene("dialog-useradd.fxml", "Add Employee", new Dialog<Employee>());
+        if (result.isPresent()) {
+            try {
+                getDbHelper().getDbPersistence().addEmployee(result.get());
+                System.out.println("Successfully added employee");
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -43,8 +48,8 @@ public class RootScene extends SceneController {
     }
 
     public void onFindMenuAction(ActionEvent actionEvent) {
-        getSceneHelper()
-                .popupDialogScene("dialog-userfind.fxml", "Find employee", "Employee data");
+        Optional result = getSceneHelper()
+                .popupDialogScene("dialog-userfind.fxml", "Find Employee", new Dialog());
     }
 
     public void onAboutMenuAction(ActionEvent actionEvent) {

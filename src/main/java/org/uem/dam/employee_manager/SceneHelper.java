@@ -3,14 +3,16 @@ package org.uem.dam.employee_manager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
+import org.uem.dam.employee_manager.controllers.FormDialog;
 import org.uem.dam.employee_manager.controllers.SceneController;
 
-import javax.security.auth.callback.Callback;
 import java.io.IOException;
 import java.util.Optional;
 
@@ -23,6 +25,11 @@ public class SceneHelper {
         this.mainApplication = mainApplication;
         initRootScene(stage);
         changeRootScene("scene-login.fxml");
+    }
+
+    @NotNull
+    public static FXMLLoader generateFXMLoader(String sceneRes) {
+        return new FXMLLoader(MainApplication.class.getResource(sceneRes));
     }
 
     public void changeRootScene(Node node) {
@@ -43,25 +50,32 @@ public class SceneHelper {
         }
     }
 
-    public Optional<ButtonType> popupDialogScene(String scene, String title, String header, Callback dialogCallback) {
+    public Optional popupDialogScene(String dialogPaneScene, String title, Dialog dialog) {
         try {
-            DialogPane dialogPane = (DialogPane) loadScene(scene);
-            Dialog dialog = new Dialog();
-            dialog.setResizable(true);
+            FXMLLoader loader = generateFXMLoader(dialogPaneScene);
+            DialogPane dialogPane = (DialogPane) loadScene(loader);
+            FormDialog formDialog = loader.getController();
             dialog.setDialogPane(dialogPane);
             dialog.setTitle(title);
-            dialog.setResultConverter();
+            dialog.setResultConverter(formDialog.getResultCallback());
             return dialog.showAndWait();
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } catch (ClassCastException e) {
+            System.err.printf("%s dialog controller doesn't inherit FormDialog\n", dialogPaneScene);
         }
+        return null;
     }
 
-    private Node loadScene(String sceneRes) throws IOException {
-        FXMLLoader loader = new FXMLLoader(MainApplication.class.getResource(sceneRes));
+    public Node loadScene(@NotNull FXMLLoader loader) throws IOException {
         Node sceneRootNode = loader.load();
         ((SceneController) loader.getController()).setMainApplication(mainApplication);
         return sceneRootNode;
+    }
+
+    public Node loadScene(@NotNull String sceneRes) throws IOException {
+        FXMLLoader loader = generateFXMLoader(sceneRes);
+        return loadScene(loader);
     }
 
     private void initRootScene(@NotNull Stage primaryStage) throws IOException {
