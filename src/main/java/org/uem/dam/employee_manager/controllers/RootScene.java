@@ -2,6 +2,7 @@ package org.uem.dam.employee_manager.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 
@@ -20,12 +21,21 @@ public class RootScene extends SceneController {
     public BorderPane rootChildScenePane;
 
     public void onLogOutMenuAction(ActionEvent actionEvent) {
-        requestSceneChange("scene-login.fxml");
+        getSceneHelper().changeRootScene("scene-login.fxml");
         getDbHelper().endDBPersistence();
     }
 
     public void onAddMenuAction(ActionEvent actionEvent) {
-        requestPopupDialogScene("dialog-useradd.fxml", "Add new employee", "New employee data");
+        if (getSceneHelper()
+                .popupDialogScene("dialog-useradd.fxml", "Add new employee", "New employee data"
+        (ButtonType button) -> {
+                   return null;
+        })
+                .get() == ButtonType.OK) {
+
+        } else {
+
+        }
     }
 
     public void onDeleteMenuAction(ActionEvent actionEvent) {
@@ -33,7 +43,8 @@ public class RootScene extends SceneController {
     }
 
     public void onFindMenuAction(ActionEvent actionEvent) {
-        requestPopupDialogScene("dialog-userfind.fxml", "Find employee", "Employee data");
+        getSceneHelper()
+                .popupDialogScene("dialog-userfind.fxml", "Find employee", "Employee data");
     }
 
     public void onAboutMenuAction(ActionEvent actionEvent) {

@@ -16,7 +16,7 @@ public class LoginScene extends SceneController {
         try {
             getDbHelper()
                     .startDBPersistence("employees", usernameTextField.getText(), passwordTextField.getText());
-            requestSceneChange("scene-welcome.fxml");
+            getSceneHelper().changeRootScene("scene-welcome.fxml");
         } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK);
             alert.show();

@@ -15,6 +15,6 @@ public class WelcomeScene extends SceneController implements InitializableContro
     }
 
     public void onActionStartButton() {
-        requestSceneChange("scene-management.fxml");
+        getSceneHelper().changeRootScene("scene-management.fxml");
     }
 }

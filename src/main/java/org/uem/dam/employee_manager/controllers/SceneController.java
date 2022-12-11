@@ -1,6 +1,7 @@
 package org.uem.dam.employee_manager.controllers;
 
 import org.uem.dam.employee_manager.MainApplication;
+import org.uem.dam.employee_manager.SceneHelper;
 import org.uem.dam.employee_manager.persistence.DBHelper;
 
 public abstract class SceneController {
@@ -16,12 +17,8 @@ public abstract class SceneController {
         }
     }
 
-    protected final void requestSceneChange(String scene) {
-        mainApplication.changeRootScene(scene);
-    }
-
-    protected final void requestPopupDialogScene(String scene, String title, String header) {
-        mainApplication.popupDialogScene(scene, title, header);
+    protected final SceneHelper getSceneHelper() {
+        return mainApplication.getSceneHelper();
     }
 
     protected final DBHelper getDbHelper() {
