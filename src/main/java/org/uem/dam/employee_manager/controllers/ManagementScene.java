@@ -42,6 +42,7 @@ public class ManagementScene extends SceneController implements InitializableCon
         }
     }
 
+    // TODO should be called after every change in the database
     private void updateEmployees() {
         dataEmployees.clear();
         try {
