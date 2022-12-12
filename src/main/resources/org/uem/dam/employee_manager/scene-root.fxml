@@ -1,27 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="358.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.uem.dam.employee_manager.controllers.RootScene">
     <children>
         <MenuBar prefHeight="0.0" prefWidth="352.0">
             <menus>
-                <Menu mnemonicParsing="false" text="Database">
+                <Menu fx:id="dbMenu" mnemonicParsing="false" text="Database">
                     <items>
-                        <MenuItem fx:id="logOutMenuItem" mnemonicParsing="false" onAction="#onLogOutMenuAction" text="Log Out" />
+                        <MenuItem fx:id="logOutMenuItem" mnemonicParsing="false" onAction="#onLogOutMenuAction"
+                                  text="Log Out"/>
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Edit">
+                <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit">
                     <items>
-                        <MenuItem fx:id="addMenuItem" mnemonicParsing="false" onAction="#onAddMenuAction" text="Add" />
-                  <MenuItem fx:id="deleteMenuItem" mnemonicParsing="false" onAction="#onDeleteMenuAction" text="Delete" />
-                  <MenuItem fx:id="findMenuItem" mnemonicParsing="false" onAction="#onFindMenuAction" text="Find" />
+                        <MenuItem fx:id="addMenuItem" mnemonicParsing="false" onAction="#onAddMenuAction" text="Add"/>
+                        <MenuItem fx:id="deleteMenuItem" mnemonicParsing="false" onAction="#onDeleteMenuAction"
+                                  text="Delete"/>
+                        <MenuItem fx:id="findMenuItem" mnemonicParsing="false" onAction="#onFindMenuAction"
+                                  text="Find"/>
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Help">
+                <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#onAboutMenuAction" text="About" />
+                        <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#onAboutMenuAction"
+                                  text="About"/>
                     </items>
                 </Menu>
             </menus>

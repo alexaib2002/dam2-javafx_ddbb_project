@@ -3,14 +3,22 @@ package org.uem.dam.employee_manager.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
+import org.uem.dam.employee_manager.enums.RootStates;
 import org.uem.dam.employee_manager.javabeans.Employee;
 
 import java.sql.SQLException;
 import java.util.Optional;
 
-public class RootScene extends SceneController {
+public class RootScene extends SceneController implements InitializableController {
+    @FXML
+    public Menu dbMenu;
+    @FXML
+    public Menu editMenu;
+    @FXML
+    public Menu helpMenu;
     @FXML
     public MenuItem logOutMenuItem;
     @FXML
@@ -23,6 +31,18 @@ public class RootScene extends SceneController {
     public MenuItem aboutMenuItem;
     @FXML
     public BorderPane rootChildScenePane;
+
+    private RootStates rootState = RootStates.STATE_WELCOME;
+
+    public void setRootState(RootStates rootState) {
+        this.rootState = rootState;
+        rootState.getRearrangableScene().changeState(this);
+    }
+
+    @Override
+    public void onControllerLoaded() {
+        setRootState(rootState);
+    }
 
     public void onLogOutMenuAction(ActionEvent actionEvent) {
         getSceneHelper().changeRootScene("scene-login.fxml");

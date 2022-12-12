@@ -22,10 +22,6 @@ public class ManagementScene extends SceneController implements InitializableCon
     private final ObservableList<Employee> dataEmployees = FXCollections.observableArrayList();
 
     public void onControllerLoaded() {
-        // side panel
-//        detailsTitledPane.minWidthProperty().bind(contentTableScrollPane.minHeightProperty());
-//        detailsTitledPane.maxWidthProperty().bind(contentTableScrollPane.maxHeightProperty());
-//        detailsTitledPane.prefWidthProperty().bind(contentTableScrollPane.prefHeightProperty());
         initDataTableView();
         dataTableView.setItems(dataEmployees);
         updateEmployees();

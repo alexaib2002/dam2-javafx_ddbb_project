@@ -2,15 +2,16 @@ package org.uem.dam.employee_manager;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
 import org.uem.dam.employee_manager.controllers.FormDialog;
+import org.uem.dam.employee_manager.controllers.RootScene;
 import org.uem.dam.employee_manager.controllers.SceneController;
 
 import java.io.IOException;
@@ -18,7 +19,8 @@ import java.util.Optional;
 
 public class SceneHelper {
     private final MainApplication mainApplication;
-    private VBox rootNode;
+    private Parent rootNode;
+    private RootScene rootController;
     private Scene scene;
 
     public SceneHelper(MainApplication mainApplication, Stage stage) throws IOException {
@@ -30,6 +32,10 @@ public class SceneHelper {
     @NotNull
     public static FXMLLoader generateFXMLoader(String sceneRes) {
         return new FXMLLoader(MainApplication.class.getResource(sceneRes));
+    }
+
+    public RootScene getRootController() {
+        return rootController;
     }
 
     public void changeRootScene(Node node) {
@@ -80,7 +86,9 @@ public class SceneHelper {
 
     private void initRootScene(@NotNull Stage primaryStage) throws IOException {
         // instantiate root node
-        rootNode = (VBox) loadScene("scene-root.fxml");
+        FXMLLoader loader = generateFXMLoader("scene-root.fxml");
+        rootNode = (Parent) loadScene(loader);
+        rootController = loader.getController();
         // init main window
         scene = new Scene(rootNode, AppInfo.APP_SIZE[0], AppInfo.APP_SIZE[1]);
         primaryStage.setTitle(AppInfo.APP_NAME);

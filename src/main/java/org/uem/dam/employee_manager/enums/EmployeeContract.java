@@ -31,7 +31,7 @@ public enum EmployeeContract {
     );
 
     // contains lambda expression with record access wrapper
-    private Callback<TableColumn.CellDataFeatures<Employee, ?>, ObservableValue<?>> columnCellFactory;
+    private final Callback<TableColumn.CellDataFeatures<Employee, ?>, ObservableValue<?>> columnCellFactory;
 
     EmployeeContract(Callback<TableColumn.CellDataFeatures<Employee, ?>, ObservableValue<?>> columnCellFactory) {
         this.columnCellFactory = columnCellFactory;
