@@ -4,7 +4,7 @@ import org.uem.dam.employee_manager.controllers.RearrangableScene;
 import org.uem.dam.employee_manager.controllers.RootScene;
 
 public enum RootStates {
-    STATE_WELCOME(root -> {
+    STATE_LOCKED(root -> {
         System.out.println("Welcome state");
         root.dbMenu.setVisible(false);
         root.editMenu.setVisible(false);
@@ -14,9 +14,9 @@ public enum RootStates {
         System.out.println("Logged state");
         root.dbMenu.setVisible(true);
         root.editMenu.setVisible(false);
-        root.helpMenu.setVisible(false);
+        root.helpMenu.setVisible(true);
     }),
-    STATE_ON_MANAGER(root -> {
+    STATE_MANAGING(root -> {
         root.dbMenu.setVisible(true);
         root.editMenu.setVisible(true);
         root.helpMenu.setVisible(true);

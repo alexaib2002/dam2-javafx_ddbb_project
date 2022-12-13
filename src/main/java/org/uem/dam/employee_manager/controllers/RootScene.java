@@ -32,7 +32,7 @@ public class RootScene extends SceneController implements InitializableControlle
     @FXML
     public BorderPane rootChildScenePane;
 
-    private RootStates rootState = RootStates.STATE_WELCOME;
+    private RootStates rootState = RootStates.STATE_LOCKED;
 
     public void setRootState(RootStates rootState) {
         this.rootState = rootState;
