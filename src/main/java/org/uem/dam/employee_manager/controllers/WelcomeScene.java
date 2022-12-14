@@ -6,9 +6,6 @@ import org.uem.dam.employee_manager.enums.RootStates;
 public class WelcomeScene extends SceneController implements InitializableController {
     public Label welcomeLabel;
 
-//    @FXML
-//    public WebView welcomeWebView;
-
     @Override
     public void onControllerLoaded() {
         welcomeLabel.setText(String.format(welcomeLabel.getText(), getDbHelper().getDbPersistence()

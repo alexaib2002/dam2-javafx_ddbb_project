@@ -2,15 +2,15 @@ package org.uem.dam.employee_manager.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import org.uem.dam.employee_manager.enums.RootStates;
 import org.uem.dam.employee_manager.javabeans.Employee;
 
 import java.sql.SQLException;
 import java.util.Optional;
+
+import static org.uem.dam.employee_manager.SceneHelper.promptAlert;
 
 public class RootScene extends SceneController implements InitializableController {
     @FXML
@@ -52,11 +52,10 @@ public class RootScene extends SceneController implements InitializableControlle
     public void onAddMenuAction(ActionEvent actionEvent) {
         // FIXME refactor popupDialogScene into its own class so we can use generics
         Optional<Employee> result = getSceneHelper()
-                .popupDialogScene("dialog-useradd.fxml", "Add Employee", new Dialog<Employee>());
+                .promptDialogScene("dialog-useradd.fxml", "Add Employee", new Dialog<Employee>());
         if (result.isPresent()) {
             try {
                 getDbHelper().getDbPersistence().addEmployee(result.get());
-                System.out.println("Successfully added employee");
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -64,12 +63,40 @@ public class RootScene extends SceneController implements InitializableControlle
     }
 
     public void onDeleteMenuAction(ActionEvent actionEvent) {
-        System.err.println("user deletion not implemented yet");
+        try {
+            TableView<Employee> tableView = (TableView<Employee>) getSceneHelper().getRootController()
+                    .rootChildScenePane.getCenter().lookup("#dataTableView");
+            // get focused row
+            Employee employee = tableView.getSelectionModel().getSelectedItem();
+            Optional<ButtonType> result = promptAlert("Delete Employee",
+                    "Are you sure you want to delete employee " + employee.employeeNo() + "?",
+                    Alert.AlertType.CONFIRMATION);
+            if (result.get() == ButtonType.OK) {
+                getDbHelper().getDbPersistence().removeEmployee(employee.employeeNo());
+            }
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("No employee selected");
+            alert.setContentText("Please select an employee to delete");
+            alert.showAndWait();
+        } catch (SQLException e) {
+            // TODO write to log
+        }
     }
 
     public void onFindMenuAction(ActionEvent actionEvent) {
+        TableView<Employee> tableView = (TableView<Employee>) getSceneHelper().getRootController().rootChildScenePane
+                .getCenter().lookup("#dataTableView");
         Optional result = getSceneHelper()
-                .popupDialogScene("dialog-userfind.fxml", "Find Employee", new Dialog());
+                .promptDialogScene("dialog-userfind.fxml", "Find Employee", new Dialog());
+        if (result.isPresent()) {
+            tableView.getSelectionModel().select((Employee) result.get());
+        } else {
+            tableView.getSelectionModel().clearSelection();
+            promptAlert("Information", "No employee found with the given employee number",
+                    Alert.AlertType.INFORMATION);
+        }
     }
 
     public void onAboutMenuAction(ActionEvent actionEvent) {

@@ -5,6 +5,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.scene.layout.BorderPane;
@@ -20,6 +21,7 @@ import java.util.Optional;
 public class SceneHelper {
     private final MainApplication mainApplication;
     private Parent rootNode;
+    private BorderPane rootChildSceneNode;
     private RootScene rootController;
     private Scene scene;
 
@@ -34,13 +36,22 @@ public class SceneHelper {
         return new FXMLLoader(MainApplication.class.getResource(sceneRes));
     }
 
+    @NotNull
+    public static Optional<ButtonType> promptAlert(String title, String content, Alert.AlertType type) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(title);
+        alert.setContentText(content);
+        Optional<ButtonType> result = alert.showAndWait();
+        return result;
+    }
+
     public RootScene getRootController() {
         return rootController;
     }
 
     public void changeRootScene(Node node) {
-        BorderPane rootChildScenePane = (BorderPane) rootNode.lookup("#rootChildScenePane");
-        rootChildScenePane.setCenter(node);
+        rootChildSceneNode.setCenter(node);
     }
 
     public void changeRootScene(String scene) {
@@ -56,7 +67,7 @@ public class SceneHelper {
         }
     }
 
-    public Optional popupDialogScene(String dialogPaneScene, String title, Dialog dialog) {
+    public Optional promptDialogScene(String dialogPaneScene, String title, Dialog dialog) {
         try {
             FXMLLoader loader = generateFXMLoader(dialogPaneScene);
             DialogPane dialogPane = (DialogPane) loadScene(loader);
@@ -89,6 +100,7 @@ public class SceneHelper {
         FXMLLoader loader = generateFXMLoader("scene-root.fxml");
         rootNode = (Parent) loadScene(loader);
         rootController = loader.getController();
+        rootChildSceneNode = rootController.rootChildScenePane;
         // init main window
         scene = new Scene(rootNode, AppInfo.APP_SIZE[0], AppInfo.APP_SIZE[1]);
         primaryStage.setTitle(AppInfo.APP_NAME);

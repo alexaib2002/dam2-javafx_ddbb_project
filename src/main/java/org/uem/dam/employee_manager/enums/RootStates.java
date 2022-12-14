@@ -5,13 +5,11 @@ import org.uem.dam.employee_manager.controllers.RootScene;
 
 public enum RootStates {
     STATE_LOCKED(root -> {
-        System.out.println("Welcome state");
         root.dbMenu.setVisible(false);
         root.editMenu.setVisible(false);
         root.helpMenu.setVisible(true);
     }),
     STATE_LOGGED(root -> {
-        System.out.println("Logged state");
         root.dbMenu.setVisible(true);
         root.editMenu.setVisible(false);
         root.helpMenu.setVisible(true);
