@@ -4,13 +4,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import org.uem.dam.employee_manager.SceneHelper;
 import org.uem.dam.employee_manager.enums.RootStates;
 import org.uem.dam.employee_manager.javabeans.Employee;
 
 import java.sql.SQLException;
 import java.util.Optional;
-
-import static org.uem.dam.employee_manager.SceneHelper.promptAlert;
 
 public class RootScene extends SceneController implements InitializableController {
     @FXML
@@ -68,7 +67,7 @@ public class RootScene extends SceneController implements InitializableControlle
                     .rootChildScenePane.getCenter().lookup("#dataTableView");
             // get focused row
             Employee employee = tableView.getSelectionModel().getSelectedItem();
-            Optional<ButtonType> result = promptAlert("Delete Employee",
+            Optional<ButtonType> result = SceneHelper.promptAlert("Delete Employee",
                     "Are you sure you want to delete employee " + employee.employeeNo() + "?",
                     Alert.AlertType.CONFIRMATION);
             if (result.get() == ButtonType.OK) {
@@ -94,7 +93,7 @@ public class RootScene extends SceneController implements InitializableControlle
             tableView.getSelectionModel().select((Employee) result.get());
         } else {
             tableView.getSelectionModel().clearSelection();
-            promptAlert("Information", "No employee found with the given employee number",
+            SceneHelper.promptAlert("Information", "No employee found with the given employee number",
                     Alert.AlertType.INFORMATION);
         }
     }
