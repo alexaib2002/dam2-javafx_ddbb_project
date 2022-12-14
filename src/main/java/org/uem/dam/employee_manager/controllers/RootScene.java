@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import org.uem.dam.employee_manager.SceneHelper;
 import org.uem.dam.employee_manager.enums.RootStates;
+import org.uem.dam.employee_manager.enums.SceneReference;
 import org.uem.dam.employee_manager.javabeans.Employee;
 
 import java.sql.SQLException;
@@ -44,14 +45,14 @@ public class RootScene extends SceneController implements InitializableControlle
     }
 
     public void onLogOutMenuAction(ActionEvent actionEvent) {
-        getSceneHelper().changeRootScene("scene-login.fxml");
+        getSceneHelper().changeRootScene(SceneReference.SCENE_LOGIN);
         getDbHelper().endDBPersistence();
     }
 
     public void onAddMenuAction(ActionEvent actionEvent) {
         // FIXME refactor popupDialogScene into its own class so we can use generics
         Optional<Employee> result = getSceneHelper()
-                .promptDialogScene("dialog-useradd.fxml", "Add Employee", new Dialog<Employee>());
+                .promptDialogScene(SceneReference.DIALOG_USERADD, "Add Employee", new Dialog<Employee>());
         if (result.isPresent()) {
             try {
                 getDbHelper().getDbPersistence().addEmployee(result.get());
@@ -88,7 +89,7 @@ public class RootScene extends SceneController implements InitializableControlle
         TableView<Employee> tableView = (TableView<Employee>) getSceneHelper().getRootController().rootChildScenePane
                 .getCenter().lookup("#dataTableView");
         Optional result = getSceneHelper()
-                .promptDialogScene("dialog-userfind.fxml", "Find Employee", new Dialog());
+                .promptDialogScene(SceneReference.DIALOG_USERFIND, "Find Employee", new Dialog());
         if (result.isPresent()) {
             tableView.getSelectionModel().select((Employee) result.get());
         } else {

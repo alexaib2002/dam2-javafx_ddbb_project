@@ -2,6 +2,7 @@ package org.uem.dam.employee_manager.controllers;
 
 import javafx.scene.control.Label;
 import org.uem.dam.employee_manager.enums.RootStates;
+import org.uem.dam.employee_manager.enums.SceneReference;
 
 public class WelcomeScene extends SceneController implements InitializableController {
     public Label welcomeLabel;
@@ -13,7 +14,7 @@ public class WelcomeScene extends SceneController implements InitializableContro
     }
 
     public void onActionStartButton() {
-        getSceneHelper().changeRootScene("scene-management.fxml");
+        getSceneHelper().changeRootScene(SceneReference.SCENE_MANAGEMENT);
         getSceneHelper().getRootController().setRootState(RootStates.STATE_MANAGING);
     }
 }

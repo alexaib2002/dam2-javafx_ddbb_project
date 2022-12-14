@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.uem.dam.employee_manager.controllers.FormDialog;
 import org.uem.dam.employee_manager.controllers.RootScene;
 import org.uem.dam.employee_manager.controllers.SceneController;
+import org.uem.dam.employee_manager.enums.SceneReference;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -28,12 +29,12 @@ public class SceneHelper {
     public SceneHelper(MainApplication mainApplication, Stage stage) throws IOException {
         this.mainApplication = mainApplication;
         initRootScene(stage);
-        changeRootScene("scene-login.fxml");
+        changeRootScene(SceneReference.SCENE_LOGIN);
     }
 
     @NotNull
-    public static FXMLLoader generateFXMLoader(String sceneRes) {
-        return new FXMLLoader(MainApplication.class.getResource(sceneRes));
+    public static FXMLLoader generateFXMLoader(SceneReference sceneRes) {
+        return new FXMLLoader(MainApplication.class.getResource(sceneRes.getScenePath()));
     }
 
     @NotNull
@@ -54,7 +55,7 @@ public class SceneHelper {
         rootChildSceneNode.setCenter(node);
     }
 
-    public void changeRootScene(String scene) {
+    public void changeRootScene(SceneReference scene) {
         try {
             changeRootScene(loadScene(scene));
         } catch (IOException e) {
@@ -67,7 +68,7 @@ public class SceneHelper {
         }
     }
 
-    public Optional promptDialogScene(String dialogPaneScene, String title, Dialog dialog) {
+    public Optional promptDialogScene(SceneReference dialogPaneScene, String title, Dialog dialog) {
         try {
             FXMLLoader loader = generateFXMLoader(dialogPaneScene);
             DialogPane dialogPane = (DialogPane) loadScene(loader);
@@ -90,14 +91,14 @@ public class SceneHelper {
         return sceneRootNode;
     }
 
-    public Node loadScene(@NotNull String sceneRes) throws IOException {
+    public Node loadScene(@NotNull SceneReference sceneRes) throws IOException {
         FXMLLoader loader = generateFXMLoader(sceneRes);
         return loadScene(loader);
     }
 
     private void initRootScene(@NotNull Stage primaryStage) throws IOException {
         // instantiate root node
-        FXMLLoader loader = generateFXMLoader("scene-root.fxml");
+        FXMLLoader loader = generateFXMLoader(SceneReference.SCENE_ROOT);
         rootNode = (Parent) loadScene(loader);
         rootController = loader.getController();
         rootChildSceneNode = rootController.rootChildScenePane;

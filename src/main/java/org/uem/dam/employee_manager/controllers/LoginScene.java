@@ -6,6 +6,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import org.uem.dam.employee_manager.enums.RootStates;
+import org.uem.dam.employee_manager.enums.SceneReference;
 
 import java.sql.SQLException;
 
@@ -17,7 +18,7 @@ public class LoginScene extends SceneController {
         try {
             getDbHelper()
                     .startDBPersistence("employees", usernameTextField.getText(), passwordTextField.getText());
-            getSceneHelper().changeRootScene("scene-welcome.fxml");
+            getSceneHelper().changeRootScene(SceneReference.SCENE_WELCOME);
             getSceneHelper().getRootController().setRootState(RootStates.STATE_LOGGED);
         } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage(), ButtonType.OK);
