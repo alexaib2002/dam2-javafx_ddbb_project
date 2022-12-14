@@ -16,10 +16,12 @@
                 <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit">
                     <items>
                         <MenuItem fx:id="addMenuItem" mnemonicParsing="false" onAction="#onAddMenuAction" text="Add"/>
-                        <MenuItem fx:id="deleteMenuItem" mnemonicParsing="false" onAction="#onDeleteMenuAction"
-                                  text="Delete"/>
+                        <MenuItem mnemonicParsing="false" onAction="#onUpdateDepartmentMenuItem"
+                                  text="Update department"/>
                         <MenuItem fx:id="findMenuItem" mnemonicParsing="false" onAction="#onFindMenuAction"
                                   text="Find"/>
+                        <MenuItem fx:id="deleteMenuItem" mnemonicParsing="false" onAction="#onDeleteMenuAction"
+                                  text="Delete"/>
                     </items>
                 </Menu>
                 <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">

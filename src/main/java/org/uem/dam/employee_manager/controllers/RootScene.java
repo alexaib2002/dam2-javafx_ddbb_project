@@ -4,9 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
-import org.uem.dam.employee_manager.SceneHelper;
 import org.uem.dam.employee_manager.enums.RootStates;
 import org.uem.dam.employee_manager.enums.SceneReference;
+import org.uem.dam.employee_manager.helpers.SceneHelper;
+import org.uem.dam.employee_manager.helpers.WriterHelper;
 import org.uem.dam.employee_manager.javabeans.Employee;
 
 import java.sql.SQLException;
@@ -34,32 +35,39 @@ public class RootScene extends SceneController implements InitializableControlle
 
     private RootStates rootState = RootStates.STATE_LOCKED;
 
-    public void setRootState(RootStates rootState) {
-        this.rootState = rootState;
-        rootState.getRearrangableScene().changeState(this);
-    }
+    private Runnable tableUpdateCallback;
 
     @Override
     public void onControllerLoaded() {
         setRootState(rootState);
     }
 
+    public void setRootState(RootStates rootState) {
+        this.rootState = rootState;
+        rootState.getRearrangableScene().changeState(this);
+    }
+
+    public void setTableUpdateCallback(Runnable tableUpdateCallback) {
+        this.tableUpdateCallback = tableUpdateCallback;
+    }
+
     public void onLogOutMenuAction(ActionEvent actionEvent) {
         getSceneHelper().changeRootScene(SceneReference.SCENE_LOGIN);
+        setRootState(RootStates.STATE_LOCKED);
         getDbHelper().endDBPersistence();
     }
 
     public void onAddMenuAction(ActionEvent actionEvent) {
-        // FIXME refactor popupDialogScene into its own class so we can use generics
         Optional<Employee> result = getSceneHelper()
                 .promptDialogScene(SceneReference.DIALOG_USERADD, "Add Employee", new Dialog<Employee>());
         if (result.isPresent()) {
             try {
                 getDbHelper().getDbPersistence().addEmployee(result.get());
             } catch (SQLException e) {
-                e.printStackTrace();
+                WriterHelper.write(e.getMessage());
             }
         }
+        tableUpdateCallback.run();
     }
 
     public void onDeleteMenuAction(ActionEvent actionEvent) {
@@ -75,21 +83,18 @@ public class RootScene extends SceneController implements InitializableControlle
                 getDbHelper().getDbPersistence().removeEmployee(employee.employeeNo());
             }
         } catch (NullPointerException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
-            alert.setHeaderText("No employee selected");
-            alert.setContentText("Please select an employee to delete");
-            alert.showAndWait();
+            SceneHelper.promptAlert("Error", "No employee selected", Alert.AlertType.ERROR);
         } catch (SQLException e) {
-            // TODO write to log
+            WriterHelper.write(e.getMessage());
         }
+        tableUpdateCallback.run();
     }
 
     public void onFindMenuAction(ActionEvent actionEvent) {
         TableView<Employee> tableView = (TableView<Employee>) getSceneHelper().getRootController().rootChildScenePane
                 .getCenter().lookup("#dataTableView");
-        Optional result = getSceneHelper()
-                .promptDialogScene(SceneReference.DIALOG_USERFIND, "Find Employee", new Dialog());
+        Optional<?> result = getSceneHelper()
+                .promptDialogScene(SceneReference.DIALOG_USERFIND, "Find Employee", new Dialog<>());
         if (result.isPresent()) {
             tableView.getSelectionModel().select((Employee) result.get());
         } else {
@@ -97,6 +102,27 @@ public class RootScene extends SceneController implements InitializableControlle
             SceneHelper.promptAlert("Information", "No employee found with the given employee number",
                     Alert.AlertType.INFORMATION);
         }
+    }
+
+    public void onUpdateDepartmentMenuItem(ActionEvent actionEvent) {
+        // update selected employee's department
+        try {
+            TableView<Employee> tableView = (TableView<Employee>) getSceneHelper().getRootController()
+                    .rootChildScenePane.getCenter().lookup("#dataTableView");
+            // get focused row
+            Employee employee = tableView.getSelectionModel().getSelectedItem();
+            Optional<String> result = getSceneHelper()
+                    .promptDialogScene(SceneReference.DIALOG_USERUPDATE, "Update Employee Department",
+                            new Dialog<>());
+            if (result.isPresent()) {
+                getDbHelper().getDbPersistence().updateEmployee(employee.employeeNo(), result.get());
+            }
+        } catch (NullPointerException e) {
+            SceneHelper.promptAlert("Error", "No employee selected", Alert.AlertType.ERROR);
+        } catch (SQLException e) {
+            WriterHelper.write(e.getMessage());
+        }
+        tableUpdateCallback.run();
     }
 
     public void onAboutMenuAction(ActionEvent actionEvent) {

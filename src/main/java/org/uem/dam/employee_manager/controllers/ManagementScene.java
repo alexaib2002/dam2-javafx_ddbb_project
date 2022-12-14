@@ -6,7 +6,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import org.uem.dam.employee_manager.enums.EmployeeContract;
+import org.uem.dam.employee_manager.helpers.WriterHelper;
 import org.uem.dam.employee_manager.javabeans.Employee;
 
 import java.sql.SQLException;
@@ -14,6 +16,8 @@ import java.sql.SQLException;
 public class ManagementScene extends SceneController implements InitializableController {
 
     public static final float COLUMN_WIDTH = 100f;
+    @FXML
+    TextArea logTextArea;
     @FXML
     ScrollPane contentTableScrollPane;
     @FXML
@@ -25,6 +29,8 @@ public class ManagementScene extends SceneController implements InitializableCon
         initDataTableView();
         dataTableView.setItems(dataEmployees);
         updateEmployees();
+        WriterHelper.setLogArea(logTextArea);
+        getSceneHelper().getRootController().setTableUpdateCallback(this::updateEmployees);
     }
 
     private void initDataTableView() {
@@ -44,7 +50,7 @@ public class ManagementScene extends SceneController implements InitializableCon
         try {
             dataEmployees.addAll(getDbHelper().getDbPersistence().queryEmployees());
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            WriterHelper.write(e.getMessage());
         }
     }
 }

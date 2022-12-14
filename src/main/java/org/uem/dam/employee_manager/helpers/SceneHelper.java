@@ -1,4 +1,4 @@
-package org.uem.dam.employee_manager;
+package org.uem.dam.employee_manager.helpers;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,6 +11,8 @@ import javafx.scene.control.DialogPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.jetbrains.annotations.NotNull;
+import org.uem.dam.employee_manager.AppInfo;
+import org.uem.dam.employee_manager.MainApplication;
 import org.uem.dam.employee_manager.controllers.FormDialog;
 import org.uem.dam.employee_manager.controllers.RootScene;
 import org.uem.dam.employee_manager.controllers.SceneController;

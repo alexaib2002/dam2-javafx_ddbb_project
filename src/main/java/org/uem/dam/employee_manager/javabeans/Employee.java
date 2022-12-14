@@ -9,4 +9,7 @@ public record Employee(
         String gender,
         String hireDate
 ) {
+    public Employee(int employeeNo, String deptNo) {
+        this(employeeNo, deptNo, null, null, null, null, null);
+    }
 }

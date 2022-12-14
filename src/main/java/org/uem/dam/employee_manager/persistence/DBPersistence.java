@@ -1,6 +1,7 @@
 package org.uem.dam.employee_manager.persistence;
 
 import org.jetbrains.annotations.NotNull;
+import org.uem.dam.employee_manager.helpers.WriterHelper;
 import org.uem.dam.employee_manager.javabeans.Employee;
 
 import java.sql.ResultSet;
@@ -41,7 +42,7 @@ public class DBPersistence {
                 ));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            WriterHelper.write(e.getMessage());
         } finally {
             if (rs != null) {
                 rs.close();
@@ -58,8 +59,9 @@ public class DBPersistence {
         try {
             stmt = dbConnection.getConnection().createStatement();
             stmt.executeUpdate(String.format("DELETE FROM employees WHERE emp_no = %s;", employeeNo));
+            WriterHelper.write(String.format("Employee %s removed", employeeNo));
         } catch (SQLException e) {
-            e.printStackTrace();
+            WriterHelper.write(e.getMessage());
         } finally {
             if (stmt != null) {
                 stmt.close();
@@ -92,7 +94,7 @@ public class DBPersistence {
                     System.err.println("More than one employee with same primary key!!");
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            WriterHelper.write(e.getMessage());
         } finally {
             if (stmt != null) {
                 stmt.close();
@@ -119,8 +121,9 @@ public class DBPersistence {
                     employee.hireDate(),
                     "9999-01-01"
             ));
+            WriterHelper.write(String.format("Employee %s added", employee.employeeNo()));
         } catch (SQLException e) {
-            e.printStackTrace();
+            WriterHelper.write(e.getMessage());
         } finally {
             if (stmt != null) {
                 stmt.close();
@@ -128,22 +131,20 @@ public class DBPersistence {
         }
     }
 
-    public void updateEmployee(Employee employee) throws SQLException {
+    public void updateEmployee(int employeeNo, String deptNo) throws SQLException {
         Statement stmt = null;
         try {
+            System.out.println(String.format("UPDATE employees.dept_emp SET dept_no = '%s' WHERE emp_no = %d;", deptNo, employeeNo));
             stmt = dbConnection.getConnection().createStatement();
-            stmt.executeUpdate(String.format("UPDATE employees.employees " +
-                            "SET birth_date = '%s', first_name = '%s', last_name = '%s', gender = '%s', hire_date = '%s' " +
+            stmt.executeUpdate(String.format("UPDATE dept_emp " +
+                            "SET dept_no = '%s' " +
                             "WHERE emp_no = %s;",
-                    employee.birthDate(),
-                    employee.firstName(),
-                    employee.lastName(),
-                    employee.gender(),
-                    employee.hireDate(),
-                    employee.employeeNo()
+                    deptNo,
+                    employeeNo
             ));
+            WriterHelper.write(String.format("Employee %s updated", employeeNo));
         } catch (SQLException e) {
-            e.printStackTrace();
+            WriterHelper.write(e.getMessage());
         } finally {
             if (stmt != null) {
                 stmt.close();

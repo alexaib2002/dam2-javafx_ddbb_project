@@ -1,8 +1,8 @@
 package org.uem.dam.employee_manager.controllers;
 
 import org.uem.dam.employee_manager.MainApplication;
-import org.uem.dam.employee_manager.SceneHelper;
-import org.uem.dam.employee_manager.persistence.DBHelper;
+import org.uem.dam.employee_manager.helpers.DBHelper;
+import org.uem.dam.employee_manager.helpers.SceneHelper;
 
 public abstract class SceneController {
     private MainApplication mainApplication;

@@ -1,4 +1,7 @@
-package org.uem.dam.employee_manager.persistence;
+package org.uem.dam.employee_manager.helpers;
+
+import org.uem.dam.employee_manager.persistence.DBConnection;
+import org.uem.dam.employee_manager.persistence.DBPersistence;
 
 import java.lang.reflect.InvocationTargetException;
 import java.sql.SQLException;

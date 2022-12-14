@@ -5,6 +5,7 @@ public enum SceneReference {
     DIALOG_ABOUT("fxml/dialog-about.fxml"),
     DIALOG_USERADD("fxml/dialog-useradd.fxml"),
     DIALOG_USERFIND("fxml/dialog-userfind.fxml"),
+    DIALOG_USERUPDATE("fxml/dialog-userupdate.fxml"),
     SCENE_LOGIN("fxml/scene-login.fxml"),
     SCENE_MANAGEMENT("fxml/scene-management.fxml"),
     SCENE_ROOT("fxml/scene-root.fxml"),

@@ -15,4 +15,6 @@ module org.uem.dam.employee_manager {
     exports org.uem.dam.employee_manager.controllers;
     exports org.uem.dam.employee_manager.javabeans;
     opens org.uem.dam.employee_manager.controllers to javafx.fxml;
+    exports org.uem.dam.employee_manager.helpers;
+    opens org.uem.dam.employee_manager.helpers to javafx.fxml;
 }
