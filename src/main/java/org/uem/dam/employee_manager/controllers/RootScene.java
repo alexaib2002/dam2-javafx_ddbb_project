@@ -59,7 +59,7 @@ public class RootScene extends SceneController implements InitializableControlle
 
     public void onAddMenuAction(ActionEvent actionEvent) {
         Optional<Employee> result = getSceneHelper()
-                .promptDialogScene(SceneReference.DIALOG_USERADD, "Add Employee", new Dialog<Employee>());
+                .promptFormDialogScene(SceneReference.DIALOG_USERADD, "Add Employee", new Dialog<Employee>());
         if (result.isPresent()) {
             try {
                 getDbHelper().getDbPersistence().addEmployee(result.get());
@@ -94,7 +94,7 @@ public class RootScene extends SceneController implements InitializableControlle
         TableView<Employee> tableView = (TableView<Employee>) getSceneHelper().getRootController().rootChildScenePane
                 .getCenter().lookup("#dataTableView");
         Optional<?> result = getSceneHelper()
-                .promptDialogScene(SceneReference.DIALOG_USERFIND, "Find Employee", new Dialog<>());
+                .promptFormDialogScene(SceneReference.DIALOG_USERFIND, "Find Employee", new Dialog<>());
         if (result.isPresent()) {
             tableView.getSelectionModel().select((Employee) result.get());
         } else {
@@ -112,7 +112,7 @@ public class RootScene extends SceneController implements InitializableControlle
             // get focused row
             Employee employee = tableView.getSelectionModel().getSelectedItem();
             Optional<String> result = getSceneHelper()
-                    .promptDialogScene(SceneReference.DIALOG_USERUPDATE, "Update Employee Department",
+                    .promptFormDialogScene(SceneReference.DIALOG_USERUPDATE, "Update Employee Department",
                             new Dialog<>());
             if (result.isPresent()) {
                 getDbHelper().getDbPersistence().updateEmployee(employee.employeeNo(), result.get());
@@ -126,6 +126,6 @@ public class RootScene extends SceneController implements InitializableControlle
     }
 
     public void onAboutMenuAction(ActionEvent actionEvent) {
-        System.err.println("about info not implemented yet");
+        getSceneHelper().promptDialogScene(SceneReference.DIALOG_ABOUT, "About", new Dialog<>());
     }
 }

@@ -1,11 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<?import javafx.scene.control.DialogPane?>
-<?import javafx.scene.image.ImageView?>
-<DialogPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea"
-            fx:controller="org.uem.dam.employee_manager.controllers.AboutDialog">
-   <graphic>
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true"/>
-   </graphic>
+<DialogPane prefHeight="300.0" prefWidth="650.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <header>
+      <Label text="Employee Manager">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Label>
+   </header>
+   <content>
+      <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS">
+               <image>
+                  <Image url="@../assets/appicon.png" />
+               </image>
+            </ImageView>
+            <VBox spacing="10.0">
+               <children>
+                  <Label text="MySQL client for managing employees">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <TextArea editable="false" text="Project inspired by some ideas of sample tutorials of codemakery.&#10;Not intended for production use.&#10;Made by Alejandro Aibar and Pablo Martin" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+   </content>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <buttonTypes>
+      <ButtonType fx:constant="CLOSE" />
+   </buttonTypes>
 </DialogPane>

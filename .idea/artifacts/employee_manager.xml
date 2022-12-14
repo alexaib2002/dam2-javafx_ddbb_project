@@ -6,6 +6,13 @@
         <option name="appClass" value="org.uem.dam.employee_manager.MainApplication" />
         <option name="description" value="" />
         <option name="htmlPlaceholderId" value="" />
+        <option name="icons">
+          <JavaFxApplicationIcons>
+            <option name="linuxIcon" value="$PROJECT_DIR$/src/main/resources/org/uem/dam/employee_manager/assets/appicon.png" />
+            <option name="macIcon" value="$PROJECT_DIR$/src/main/resources/org/uem/dam/employee_manager/assets/appicon.png" />
+            <option name="windowsIcon" value="$PROJECT_DIR$/src/main/resources/org/uem/dam/employee_manager/assets/appicon.png" />
+          </JavaFxApplicationIcons>
+        </option>
         <option name="title" value="Employee Manager" />
         <option name="vendor" value="" />
         <option name="version" value="" />

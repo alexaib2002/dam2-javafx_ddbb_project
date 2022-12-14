@@ -70,7 +70,7 @@ public class SceneHelper {
         }
     }
 
-    public Optional promptDialogScene(SceneReference dialogPaneScene, String title, Dialog dialog) {
+    public Optional promptFormDialogScene(SceneReference dialogPaneScene, String title, Dialog dialog) {
         try {
             FXMLLoader loader = generateFXMLoader(dialogPaneScene);
             DialogPane dialogPane = (DialogPane) loadScene(loader);
@@ -85,6 +85,19 @@ public class SceneHelper {
             System.err.printf("%s dialog controller doesn't inherit FormDialog\n", dialogPaneScene);
         }
         return null;
+    }
+
+    public void promptDialogScene(SceneReference dialogPaneScene, String title, Dialog dialog) {
+        // make dialog with loadScene method
+        try {
+            DialogPane dialogPane = (DialogPane) loadScene(dialogPaneScene);
+            dialog.setDialogPane(dialogPane);
+            dialog.setTitle(title);
+            dialog.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     public Node loadScene(@NotNull FXMLLoader loader) throws IOException {
