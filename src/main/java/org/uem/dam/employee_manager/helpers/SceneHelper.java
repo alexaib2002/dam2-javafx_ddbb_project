@@ -102,7 +102,10 @@ public class SceneHelper {
 
     public Node loadScene(@NotNull FXMLLoader loader) throws IOException {
         Node sceneRootNode = loader.load();
-        ((SceneController) loader.getController()).setMainApplication(mainApplication);
+        if (loader.getController() != null) {
+            ((SceneController) loader.getController()).setMainApplication(mainApplication);
+        } else
+            System.out.println("This scene doesn't support user interaction");
         return sceneRootNode;
     }
 
