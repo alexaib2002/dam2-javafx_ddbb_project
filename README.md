@@ -51,7 +51,7 @@ all Maven dependencies are up-to-date.
 
 You'll also need a Docker container running with mySQL and an accepted database loaded on it (careful, this app doesn't check if the database is compatible, you may end with unexpected exceptions!)
 
-The image used for the container running the server is available on https://hub.docker.com/r/ubuntu/mysql.
+The image used for the container running the server is available on https://hub.docker.com/r/ubuntu/mysql. The port of mySQL should be mapped to the host port 30306.
 
 The sample database data was loaded from https://github.com/datacharmer/test_db (the number of employees was limited to 1,000, as if you try to load the 300,000 employees on the sample script, the application will crash when loading the table!)
 
