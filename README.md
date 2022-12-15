@@ -54,3 +54,7 @@ You'll also need a Docker container running with mySQL and an accepted database 
 The image used for the container running the server is available on https://hub.docker.com/r/ubuntu/mysql.
 
 The sample database data was loaded from https://github.com/datacharmer/test_db (the number of employees was limited to 1,000, as if you try to load the 300,000 employees on the sample script, the application will crash when loading the table!)
+
+## Credits
+
+https://www.flaticon.com, for providing the main app icon and almost all icons of the app
