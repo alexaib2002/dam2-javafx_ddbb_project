@@ -1,37 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
+
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="358.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.uem.dam.employee_manager.controllers.RootScene">
     <children>
         <MenuBar prefHeight="0.0" prefWidth="352.0">
             <menus>
                 <Menu fx:id="dbMenu" mnemonicParsing="false" text="Database">
                     <items>
-                        <MenuItem fx:id="logOutMenuItem" mnemonicParsing="false" onAction="#onLogOutMenuAction"
-                                  text="Log Out"/>
+                        <MenuItem fx:id="logOutMenuItem" mnemonicParsing="false" onAction="#onLogOutMenuAction" text="Log Out" />
                     </items>
                 </Menu>
                 <Menu fx:id="editMenu" mnemonicParsing="false" text="Edit">
                     <items>
-                        <MenuItem fx:id="addMenuItem" mnemonicParsing="false" onAction="#onAddMenuAction" text="Add"/>
-                        <MenuItem mnemonicParsing="false" onAction="#onUpdateDepartmentMenuItem"
-                                  text="Update department"/>
-                        <MenuItem fx:id="findMenuItem" mnemonicParsing="false" onAction="#onFindMenuAction"
-                                  text="Find"/>
-                        <MenuItem fx:id="deleteMenuItem" mnemonicParsing="false" onAction="#onDeleteMenuAction"
-                                  text="Delete"/>
+                        <MenuItem fx:id="addMenuItem" mnemonicParsing="false" onAction="#onAddMenuAction" text="Add" />
+                        <MenuItem mnemonicParsing="false" onAction="#onUpdateDepartmentMenuItem" text="Update department" />
+                        <MenuItem fx:id="findMenuItem" mnemonicParsing="false" onAction="#onFindMenuAction" text="Find" />
+                        <MenuItem fx:id="deleteMenuItem" mnemonicParsing="false" onAction="#onDeleteMenuAction" text="Delete" />
                     </items>
                 </Menu>
                 <Menu fx:id="helpMenu" mnemonicParsing="false" text="Help">
                     <items>
-                        <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#onAboutMenuAction"
-                                  text="About"/>
+                        <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#onAboutMenuAction" text="About" />
                     </items>
                 </Menu>
             </menus>
         </MenuBar>
-        <BorderPane fx:id="rootChildScenePane" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+        <BorderPane fx:id="rootChildScenePane" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </VBox.margin></BorderPane>
     </children>
 </VBox>
