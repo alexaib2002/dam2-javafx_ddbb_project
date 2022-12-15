@@ -1,92 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<DialogPane xmlns:fx="http://javafx.com/fxml/1" fx:id="dialogPane" headerText="Add user"
-            maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
-            minWidth="-Infinity"
-            prefHeight="361.0" prefWidth="432.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
-            fx:controller="org.uem.dam.employee_manager.controllers.UseraddDialog">
+
+<DialogPane fx:id="dialogPane" headerText="Add user" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="364.0" prefWidth="546.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.uem.dam.employee_manager.controllers.UseraddDialog">
     <header>
-        <AnchorPane minHeight="0.0" minWidth="0.0"/>
+        <AnchorPane minHeight="0.0" minWidth="0.0" />
     </header>
     <content>
-        <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+        <HBox>
             <children>
-                <GridPane alignment="CENTER" hgap="20.0" maxHeight="1.7976931348623157E308"
-                          maxWidth="1.7976931348623157E308" vgap="10.0" AnchorPane.bottomAnchor="0.0"
-                          AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-
+            <AnchorPane maxHeight="1.7976931348623157E308">
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="62.0">
+                     <image>
+                        <Image url="@../assets/add.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                     <children>
-                        <Label text="Employee Number" textAlignment="JUSTIFY" GridPane.halignment="LEFT"
-                               GridPane.hgrow="NEVER"/>
-                        <Spinner fx:id="empNoInput" editable="true" maxHeight="-Infinity"
-                                 maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
-                            <valueFactory>
-                                <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="0" max="1000000" min="0"/>
-                            </valueFactory>
-                        </Spinner>
-                        <Label text="Department Number" textAlignment="JUSTIFY" GridPane.halignment="LEFT"
-                               GridPane.hgrow="NEVER" GridPane.rowIndex="1"/>
-                        <TextField fx:id="deptNoInput" editable="true" maxHeight="-Infinity"
-                                   maxWidth="1.7976931348623157E308" promptText="d001" GridPane.columnIndex="1"
-                                   GridPane.hgrow="ALWAYS" GridPane.rowIndex="1"/>
-                        <Label text="Birth Date" textAlignment="JUSTIFY" GridPane.halignment="LEFT"
-                               GridPane.hgrow="NEVER" GridPane.rowIndex="2"/>
-                        <DatePicker fx:id="birthDateInput" maxHeight="-Infinity" maxWidth="1.7976931348623157E308"
-                                    promptText="mm/dd/yyyyy" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"
-                                    GridPane.rowIndex="2"/>
-                        <Label text="First Name" textAlignment="JUSTIFY" GridPane.halignment="LEFT"
-                               GridPane.hgrow="NEVER" GridPane.rowIndex="3"/>
-                        <TextField fx:id="firstNameInput" maxHeight="-Infinity" maxWidth="1.7976931348623157E308"
-                                   promptText="Insert first name" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"
-                                   GridPane.rowIndex="3"/>
-                        <Label text="Last Name" textAlignment="JUSTIFY" GridPane.halignment="LEFT"
-                               GridPane.hgrow="NEVER" GridPane.rowIndex="4"/>
-                        <TextField fx:id="lastNameInput" maxHeight="-Infinity" maxWidth="1.7976931348623157E308"
-                                   promptText="Insert last name" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"
-                                   GridPane.rowIndex="4"/>
-                        <Label text="Gender" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="5"
-                               GridPane.rowSpan="2" GridPane.valignment="CENTER"/>
-                        <RadioButton mnemonicParsing="false" text="Male" GridPane.columnIndex="1"
-                                     GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="5">
-                            <toggleGroup>
-                                <ToggleGroup fx:id="genderButtons"/>
-                            </toggleGroup>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="Female" toggleGroup="$genderButtons"
-                                     GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER"
-                                     GridPane.rowIndex="6"/>
-                        <Label text="Hire Date" textAlignment="JUSTIFY" GridPane.halignment="LEFT"
-                               GridPane.hgrow="NEVER" GridPane.rowIndex="7"/>
-                        <DatePicker fx:id="hireDateInput" maxHeight="-Infinity" maxWidth="1.7976931348623157E308"
-                                    promptText="mm/dd/yyyyy" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS"
-                                    GridPane.rowIndex="7"/>
+                        <GridPane alignment="CENTER" hgap="20.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" vgap="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+                            <children>
+                                <Label text="Employee Number" textAlignment="JUSTIFY" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" />
+                                <Spinner fx:id="empNoInput" editable="true" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
+                                    <valueFactory>
+                                        <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="0" max="1000000" min="0" />
+                                    </valueFactory>
+                                </Spinner>
+                                <Label text="Department Number" textAlignment="JUSTIFY" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="1" />
+                                <TextField fx:id="deptNoInput" editable="true" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" promptText="d001" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" />
+                                <Label text="Birth Date" textAlignment="JUSTIFY" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="2" />
+                                <DatePicker fx:id="birthDateInput" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" promptText="mm/dd/yyyyy" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" />
+                                <Label text="First Name" textAlignment="JUSTIFY" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="3" />
+                                <TextField fx:id="firstNameInput" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" promptText="Insert first name" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" />
+                                <Label text="Last Name" textAlignment="JUSTIFY" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="4" />
+                                <TextField fx:id="lastNameInput" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" promptText="Insert last name" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="4" />
+                                <Label text="Gender" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="5" GridPane.rowSpan="2" GridPane.valignment="CENTER" />
+                                <RadioButton mnemonicParsing="false" text="Male" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="5">
+                                    <toggleGroup>
+                                        <ToggleGroup fx:id="genderButtons" />
+                                    </toggleGroup>
+                                </RadioButton>
+                                <RadioButton mnemonicParsing="false" text="Female" toggleGroup="$genderButtons" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="6" />
+                                <Label text="Hire Date" textAlignment="JUSTIFY" GridPane.halignment="LEFT" GridPane.hgrow="NEVER" GridPane.rowIndex="7" />
+                                <DatePicker fx:id="hireDateInput" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" promptText="mm/dd/yyyyy" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.rowIndex="7" />
+                            </children>
+                            <columnConstraints>
+                                <ColumnConstraints />
+                                <ColumnConstraints />
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints />
+                                <RowConstraints />
+                                <RowConstraints />
+                                <RowConstraints />
+                                <RowConstraints />
+                                <RowConstraints />
+                                <RowConstraints />
+                                <RowConstraints />
+                            </rowConstraints>
+                        </GridPane>
                     </children>
-               <columnConstraints>
-                  <ColumnConstraints />
-                  <ColumnConstraints />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints />
-                  <RowConstraints />
-                  <RowConstraints />
-                  <RowConstraints />
-                  <RowConstraints />
-                  <RowConstraints />
-                  <RowConstraints />
-                   <RowConstraints/>
-               </rowConstraints>
-                </GridPane>
+                </AnchorPane>
             </children>
-        </AnchorPane>
+        </HBox>
     </content>
     <buttonTypes>
-        <ButtonType fx:constant="CANCEL"/>
-        <ButtonType fx:constant="FINISH"/>
+        <ButtonType fx:constant="CANCEL" />
+        <ButtonType fx:constant="FINISH" />
     </buttonTypes>
     <padding>
-        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
     </padding>
 </DialogPane>
