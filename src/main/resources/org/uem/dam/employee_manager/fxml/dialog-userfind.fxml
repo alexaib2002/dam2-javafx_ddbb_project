@@ -1,25 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.VBox?>
-<DialogPane xmlns:fx="http://javafx.com/fxml/1" fx:id="dialogPane" xmlns="http://javafx.com/javafx/17.0.2-ea"
-            fx:controller="org.uem.dam.employee_manager.controllers.UserfindDialog">
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<DialogPane fx:id="dialogPane" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.uem.dam.employee_manager.controllers.UserfindDialog">
    <content>
-      <VBox>
+      <HBox>
          <children>
-            <Label text="Employee Number"/>
-            <Spinner fx:id="empNoInput" editable="true" maxHeight="-Infinity" maxWidth="1.7976931348623157E308"
-                     GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
-               <valueFactory>
-                  <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="0" max="1000000" min="0"/>
-               </valueFactory>
-            </Spinner>
+            <AnchorPane>
+               <children>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/find.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane>
+               <children>
+                  <VBox alignment="CENTER" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label text="Employee Number" />
+                        <Spinner fx:id="empNoInput" editable="true" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS">
+                           <valueFactory>
+                              <SpinnerValueFactory.IntegerSpinnerValueFactory initialValue="0" max="1000000" min="0" />
+                           </valueFactory>
+                        </Spinner>
+                     </children>
+                  </VBox>
+               </children>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </AnchorPane>
          </children>
-      </VBox>
+      </HBox>
    </content>
    <buttonTypes>
-      <ButtonType fx:constant="FINISH"/>
-      <ButtonType fx:constant="CANCEL"/>
+      <ButtonType fx:constant="FINISH" />
+      <ButtonType fx:constant="CANCEL" />
    </buttonTypes>
 </DialogPane>
