@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="MainApplication" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="org.uem.dam.employee_manager.MainApplication" />
+    <module name="employee_manager" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
